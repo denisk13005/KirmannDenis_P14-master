@@ -1,0 +1,40 @@
+@import "../../sass/utils/variables.scss";
+.employeeListContainer {
+  width: 100%;
+  margin: auto;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(216, 216, 216) 99%
+  );
+  h1 {
+    font-size: 36px;
+    margin: 20px 0px;
+    font-family: serif;
+    margin: 40px auto;
+    background: linear-gradient(
+      to right,
+      $darkBlue 0%,
+      $lightBlue 50%,
+      $lightGreen 130%
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  a {
+    font-size: 36px;
+
+    &:hover {
+      color: $lightBlue;
+    }
+  }
+  .redirectFooter {
+    width: 900px;
+    display: flex;
+    justify-content: space-around;
+  }
+}

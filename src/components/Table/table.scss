@@ -1,0 +1,113 @@
+@import "../../sass/utils/variables.scss";
+.tableTop {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  margin-bottom: 20px;
+  color: $darkBlue;
+  span {
+    font-size: 20px;
+  }
+  select {
+    width: 4.5vw;
+    height: 2.5vh;
+    margin: 0px 5px;
+    background-color: $lightGreen;
+    border: none;
+    border-radius: 5px;
+    color: $darkBlue;
+    option {
+      color: $darkBlue;
+      background-color: $lightGreen;
+    }
+  }
+  .search {
+    input {
+      border: none;
+      border-radius: 5px;
+      color: $lightBlue;
+      font-weight: bold;
+      &:focus {
+        outline: 2px solid $lightPink;
+      }
+    }
+  }
+}
+
+.tableContainer {
+  border-bottom: 1px solid $darkBlue;
+  width: 900px;
+  border-collapse: collapse;
+  color: $darkBlue;
+  thead {
+    tr {
+      border-bottom: 1px solid $darkBlue;
+      height: 4vh;
+    }
+  }
+  th {
+    min-width: 5vw;
+    min-width: max-content;
+    padding: 0px 10px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: $lightGreen;
+  }
+
+  tbody {
+    td {
+      height: 4vh;
+      padding-left: 10px;
+    }
+  }
+}
+
+.tabFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 18px;
+  width: 900px;
+  color: $darkBlue;
+  .pageBtns {
+    display: flex;
+    #next {
+      width: 50px;
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #previous {
+      width: 50px;
+      background-color: transparent;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .pageNumber {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(
+      180deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(201, 201, 201, 1) 100%
+    );
+    margin-left: 20px;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 3px;
+  }
+}

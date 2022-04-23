@@ -1,0 +1,45 @@
+@import "../../sass/utils/variables.scss";
+
+#createEmployeeContainer {
+  // border: 1px solid grey;
+  width: 100%;
+  height: auto;
+  margin: 0px auto;
+  text-align: center;
+  padding-bottom: 20px;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(224, 224, 224) 80%
+  );
+}
+#title {
+  background: linear-gradient(
+    to right,
+    $darkBlue 0%,
+    $lightBlue 50%,
+    $lightGreen 70%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#viewCurrentEmployee {
+  text-decoration: none;
+  color: $darkBlue;
+  display: block;
+  margin: 0px auto;
+  font-size: 24px;
+  padding: 30px;
+  &:hover {
+    color: $lightBlue;
+  }
+}
+h2 {
+  font-size: 36px;
+  margin: 0;
+  border-top: 2px solid $lightBlue;
+  border-top-style: groove;
+  padding: 20px 0px 20px;
+  color: $lightBlue;
+}

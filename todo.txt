@@ -1,0 +1,14 @@
+proptypes pour modale
+jsdoc
+readme pour package
+routage
+
+
+
+header customisable 
+info customisable 
+footer
+
+
+
+

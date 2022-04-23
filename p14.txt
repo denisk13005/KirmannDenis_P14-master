@@ -1,0 +1,7 @@
+-------------------P14----------------------------
+
+Modale :
+
+s'affiche si tous les champs remplis sont corrects
+reste affichée tant qu'on ne la ferme pas 
+vide les champs lorsque qu'on la ferme
