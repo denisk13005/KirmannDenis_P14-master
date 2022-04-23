@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/KirmannDenis_P14_18032021-master/static/css/main.6552cda8.css",
+    "main.js": "/KirmannDenis_P14_18032021-master/static/js/main.4a312b1c.js",
+    "index.html": "/KirmannDenis_P14_18032021-master/index.html",
+    "main.6552cda8.css.map": "/KirmannDenis_P14_18032021-master/static/css/main.6552cda8.css.map",
+    "main.4a312b1c.js.map": "/KirmannDenis_P14_18032021-master/static/js/main.4a312b1c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6552cda8.css",
+    "static/js/main.4a312b1c.js"
+  ]
+}
