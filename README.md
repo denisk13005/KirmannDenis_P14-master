@@ -2,7 +2,7 @@
 ##                                                             Made By Kirmann Denis
 
 ### Framework && Technos
-![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Vercel](https://img.shields.io/badge/Deploy-Vercel-black) ![Redux](https://img.shields.io/badge/Library-ReduxToolkit-blueviolet)
+![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Firebase](https://img.shields.io/badge/Deploy-Firebase-yellow) ![Redux](https://img.shields.io/badge/Library-ReduxToolkit-blueviolet)
 
 # Getting Started with Create React App
 
