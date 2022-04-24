@@ -1,7 +1,9 @@
 import React from "react"
+import PropTypes from "prop-types"
 import "./globalFilter.scss"
 
 const GlobalFilter = ({ filter, setFilter }) => {
+  console.log(typeof filter, typeof setFilter)
   return (
     <span id="searchContainer">
       <div className="search">
@@ -15,6 +17,11 @@ const GlobalFilter = ({ filter, setFilter }) => {
       </div>
     </span>
   )
+}
+
+GlobalFilter.propTypes = {
+  filter: PropTypes.string,
+  setFilter: PropTypes.func,
 }
 
 export default GlobalFilter

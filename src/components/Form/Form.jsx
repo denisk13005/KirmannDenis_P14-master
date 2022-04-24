@@ -4,6 +4,7 @@ import { states } from "../../mocks/states"
 import { addEmployee } from "../../features/employee"
 import DateSelector from "../DateSelector/DateSelector.js"
 import SelectComponent from "../Select/SelectComponent.js"
+import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import "./form.scss"
 const optionsDept = departments.map((el) => ({
@@ -15,6 +16,7 @@ const optionsDept = departments.map((el) => ({
  * @returns {ReactComponentElement} form for add employee
  */
 const Form = ({ toggleModal }) => {
+  console.log(typeof toggleModal)
   //local state
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
@@ -28,7 +30,7 @@ const Form = ({ toggleModal }) => {
 
   /**
    *update birth date when chosen
-   * @param {string} date birthday date
+   * @param {object} date birthday date
    *
    */
   const updateBirth = (date) => {
@@ -37,7 +39,7 @@ const Form = ({ toggleModal }) => {
 
   /**
    *update start date when chosen
-   * @param {string} date start date
+   * @param {object} date start date
    */
   const updateStart = (date) => {
     setStart(date)
@@ -84,7 +86,6 @@ const Form = ({ toggleModal }) => {
     )
     //modal de confirmation
     toggleModal()
-    console.log(birth)
   }
 
   return (
@@ -173,6 +174,9 @@ const Form = ({ toggleModal }) => {
       </form>
     </div>
   )
+}
+Form.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
 }
 
 export default Form

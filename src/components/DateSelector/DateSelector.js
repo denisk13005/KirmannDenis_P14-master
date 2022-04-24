@@ -2,8 +2,11 @@ import React, { useState } from "react"
 import "./dateSelector.scss"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import PropTypes from "prop-types"
+
 const DateSelector = (props) => {
   const [selectedDate, setselectedDate] = useState(null)
+  console.log(typeof selectedDate)
   return (
     <div className="datePickerContainer">
       <DatePicker
@@ -25,5 +28,7 @@ const DateSelector = (props) => {
     </div>
   )
 }
-
+DateSelector.propTypes = {
+  selectedDate: PropTypes.object.isRequired,
+}
 export default DateSelector
