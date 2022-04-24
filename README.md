@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Installation Guide
 
-Clone or copy his repo and install the dependencies with :
+Clone or copy this repo and install the dependencies with :
 
 ### `npm i`
 
