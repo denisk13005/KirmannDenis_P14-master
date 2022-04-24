@@ -1,12 +1,20 @@
-#                                                                    ARGENT BANK
-##                                                             Made By Kirmann Denis
+# Wealth Health
+
+## Made By Kirmann Denis
 
 ### Framework && Technos
+
 ![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Firebase](https://img.shields.io/badge/Deploy-Firebase-yellow) ![Redux](https://img.shields.io/badge/Library-ReduxToolkit-blueviolet)
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+# Installation Guide
+
+Clone or copy his repo and install the dependencies with :
+
+## npm i
 
 ## Available Scripts
 
