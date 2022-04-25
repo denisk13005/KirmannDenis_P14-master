@@ -16,7 +16,6 @@ const optionsDept = departments.map((el) => ({
  * @returns {ReactComponentElement} form for add employee
  */
 const Form = ({ toggleModal }) => {
-  console.log(typeof toggleModal)
   //local state
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")

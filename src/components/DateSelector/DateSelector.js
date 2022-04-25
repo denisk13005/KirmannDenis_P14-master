@@ -4,21 +4,20 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import PropTypes from "prop-types"
 
-const DateSelector = (props) => {
+const DateSelector = ({ id, updateBirth, updateStart }) => {
   const [selectedDate, setselectedDate] = useState(null)
-  console.log(typeof selectedDate)
   return (
     <div className="datePickerContainer">
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
           setselectedDate(date)
-          props.id === "birth"
-            ? props.updateBirth(date.toLocaleDateString())
-            : props.updateStart(date.toLocaleDateString())
+          id === "birth"
+            ? updateBirth(date.toLocaleDateString())
+            : updateStart(date.toLocaleDateString())
         }}
         className="input"
-        id={props.id}
+        id={id}
         value={selectedDate}
         maxDate={new Date()}
         isClearable
@@ -29,6 +28,8 @@ const DateSelector = (props) => {
   )
 }
 DateSelector.propTypes = {
-  selectedDate: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  updateBirth: PropTypes.func.isRequired,
+  updateStart: PropTypes.func.isRequired,
 }
 export default DateSelector
