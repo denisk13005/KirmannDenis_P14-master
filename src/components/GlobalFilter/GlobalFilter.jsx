@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import "./globalFilter.scss"
 
 const GlobalFilter = ({ filter, setFilter }) => {
-  console.log(typeof filter, typeof setFilter)
   return (
     <span id="searchContainer">
       <div className="search">

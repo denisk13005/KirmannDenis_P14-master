@@ -21,7 +21,7 @@ const SelectComponent = ({ options, id, updateDepartment, updateState }) => {
 SelectComponent.propTypes = {
   options: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
-  updateDepartment: PropTypes.func.isRequired,
-  updateState: PropTypes.func.isRequired,
+  updateDepartment: PropTypes.func,
+  updateState: PropTypes.func,
 }
 export default SelectComponent

@@ -27,7 +27,6 @@ const Form = ({ toggleModal }) => {
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
-  console.log(birth)
 
   /**
    *update birth date when chosen

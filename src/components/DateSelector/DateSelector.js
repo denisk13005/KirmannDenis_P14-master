@@ -33,8 +33,8 @@ const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
 }
 DateSelector.propTypes = {
   id: PropTypes.string.isRequired,
-  updateBirth: PropTypes.func.isRequired,
-  updateStart: PropTypes.func.isRequired,
+  updateBirth: PropTypes.func,
+  updateStart: PropTypes.func,
 }
 export default DateSelector
 //
