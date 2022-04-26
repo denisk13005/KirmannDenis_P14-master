@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
 import { addEmployee } from "../../features/employee"
@@ -26,6 +26,8 @@ const Form = ({ toggleModal }) => {
   const [state, setState] = useState("AL")
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
+  const [resetValue, setResetValue] = useState(false)
+  console.log(birth)
 
   /**
    *update birth date when chosen
@@ -60,6 +62,18 @@ const Form = ({ toggleModal }) => {
     setDept(department)
   }
 
+  const fieldReset = () => {
+    setFirstName("")
+    setLastName("")
+    setBirth(" ")
+    setStart(" ")
+    setStreet("")
+    setCity("")
+    setState("")
+    setZip("")
+    setDept("")
+  }
+
   const dispatch = useDispatch()
 
   /**
@@ -85,6 +99,8 @@ const Form = ({ toggleModal }) => {
     )
     //modal de confirmation
     toggleModal()
+    fieldReset()
+    setResetValue(true)
   }
 
   return (
@@ -112,10 +128,20 @@ const Form = ({ toggleModal }) => {
         />
         <label htmlFor="birth">Date Of Birth</label>
 
-        <DateSelector id="birth" updateBirth={updateBirth} required />
+        <DateSelector
+          id="birth"
+          updateBirth={updateBirth}
+          resetValue={resetValue}
+          required
+        />
         <label htmlFor="start">Start Date</label>
 
-        <DateSelector id="start" updateStart={updateStart} />
+        <DateSelector
+          id="start"
+          updateStart={updateStart}
+          resetValue={resetValue}
+          required
+        />
 
         <fieldset className="address">
           <legend>Address</legend>

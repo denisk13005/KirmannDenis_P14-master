@@ -1,11 +1,15 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./dateSelector.scss"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import PropTypes from "prop-types"
 
-const DateSelector = ({ id, updateBirth, updateStart }) => {
+const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
   const [selectedDate, setselectedDate] = useState(null)
+  useEffect(() => {
+    resetValue && setselectedDate(null)
+  }, [resetValue])
+
   return (
     <div className="datePickerContainer">
       <DatePicker
@@ -33,4 +37,4 @@ DateSelector.propTypes = {
   updateStart: PropTypes.func.isRequired,
 }
 export default DateSelector
-// 
+//
