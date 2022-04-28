@@ -72,10 +72,10 @@ form {
     border-radius: 50px;
     width: 150px;
     height: 40px;
-    box-shadow: 2px 2px 2px grey;
+    box-shadow: 2px 2px 8px $lightPink;
     background: linear-gradient(
       144deg,
-      $darkBlue 0%,
+      $lightPink 0%,
       $lightGreen 30%,
       $lightBlue 99%
     );
@@ -84,7 +84,7 @@ form {
     border: none;
 
     &:hover {
-      box-shadow: 5px 5px 5px $lightPink;
+      box-shadow: 2px 2px 2px $darkBlue;
       cursor: pointer;
       font-weight: 700;
       background-color: rgb(206, 206, 206);

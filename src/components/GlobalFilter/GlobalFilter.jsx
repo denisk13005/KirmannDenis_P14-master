@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import "./globalFilter.scss"
 
 const GlobalFilter = ({ filter, setFilter }) => {
@@ -15,6 +16,11 @@ const GlobalFilter = ({ filter, setFilter }) => {
       </div>
     </span>
   )
+}
+
+GlobalFilter.propTypes = {
+  filter: PropTypes.string,
+  setFilter: PropTypes.func,
 }
 
 export default GlobalFilter

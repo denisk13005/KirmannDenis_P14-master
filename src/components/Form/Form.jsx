@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
 import { addEmployee } from "../../features/employee"
 import DateSelector from "../DateSelector/DateSelector.js"
 import SelectComponent from "../Select/SelectComponent.js"
+import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import "./form.scss"
 const optionsDept = departments.map((el) => ({
@@ -25,10 +26,11 @@ const Form = ({ toggleModal }) => {
   const [state, setState] = useState("AL")
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
+  const [resetValue, setResetValue] = useState(false)
 
   /**
    *update birth date when chosen
-   * @param {string} date birthday date
+   * @param {object} date birthday date
    *
    */
   const updateBirth = (date) => {
@@ -37,7 +39,7 @@ const Form = ({ toggleModal }) => {
 
   /**
    *update start date when chosen
-   * @param {string} date start date
+   * @param {object} date start date
    */
   const updateStart = (date) => {
     setStart(date)
@@ -57,6 +59,18 @@ const Form = ({ toggleModal }) => {
    */
   const updateDepartment = (department) => {
     setDept(department)
+  }
+
+  const fieldReset = () => {
+    setFirstName("")
+    setLastName("")
+    setBirth(" ")
+    setStart(" ")
+    setStreet("")
+    setCity("")
+    setState("")
+    setZip("")
+    setDept("")
   }
 
   const dispatch = useDispatch()
@@ -84,7 +98,8 @@ const Form = ({ toggleModal }) => {
     )
     //modal de confirmation
     toggleModal()
-    console.log(birth)
+    fieldReset()
+    setResetValue(true)
   }
 
   return (
@@ -112,10 +127,20 @@ const Form = ({ toggleModal }) => {
         />
         <label htmlFor="birth">Date Of Birth</label>
 
-        <DateSelector id="birth" updateBirth={updateBirth} required />
+        <DateSelector
+          id="birth"
+          updateBirth={updateBirth}
+          resetValue={resetValue}
+          required
+        />
         <label htmlFor="start">Start Date</label>
 
-        <DateSelector id="start" updateStart={updateStart} />
+        <DateSelector
+          id="start"
+          updateStart={updateStart}
+          resetValue={resetValue}
+          required
+        />
 
         <fieldset className="address">
           <legend>Address</legend>
@@ -173,6 +198,9 @@ const Form = ({ toggleModal }) => {
       </form>
     </div>
   )
+}
+Form.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
 }
 
 export default Form

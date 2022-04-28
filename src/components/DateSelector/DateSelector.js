@@ -1,21 +1,27 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "./dateSelector.scss"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-const DateSelector = (props) => {
+import PropTypes from "prop-types"
+
+const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
   const [selectedDate, setselectedDate] = useState(null)
+  useEffect(() => {
+    resetValue && setselectedDate(null)
+  }, [resetValue])
+
   return (
     <div className="datePickerContainer">
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
           setselectedDate(date)
-          props.id === "birth"
-            ? props.updateBirth(date.toLocaleDateString())
-            : props.updateStart(date.toLocaleDateString())
+          id === "birth"
+            ? updateBirth(date.toLocaleDateString())
+            : updateStart(date.toLocaleDateString())
         }}
         className="input"
-        id={props.id}
+        id={id}
         value={selectedDate}
         maxDate={new Date()}
         isClearable
@@ -25,5 +31,10 @@ const DateSelector = (props) => {
     </div>
   )
 }
-
+DateSelector.propTypes = {
+  id: PropTypes.string.isRequired,
+  updateBirth: PropTypes.func,
+  updateStart: PropTypes.func,
+}
 export default DateSelector
+//

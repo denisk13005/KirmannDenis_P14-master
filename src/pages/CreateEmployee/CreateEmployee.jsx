@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import Form from "../../components/Form/Form"
-// import Modal from "../../components/Modal/Modal"
 import { Modal } from "dk_modale_package"
 
 import "./createEmployee.scss"
@@ -12,25 +11,28 @@ const CreateEmployee = () => {
   const toggleModal = () => {
     modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true)
   }
+
   const headerStyle = {
-    background: "linear-gradient(165deg,#4d5198, #daf2dc)",
-    fontSize: "48px",
+    background: "linear-gradient(rgba(0,0,0,0.7) , white )",
+    fontSize: "32px",
+    height: "4vh",
     color: "white",
   }
   const modalContainerStyle = {
-    background:
-      "linear-gradient(165deg,#4d5198 0%,#daf2dc 40%,white ,#daf2dc 60%,#4d5198 100%)",
-    fontSize: "32px",
-    color: "#4d5198",
+    background: "white",
+    fontSize: "48px",
+    color: "black",
+    height: "15vh",
   }
   const backgroundModalContainerStyle = {
     background:
       "linear-gradient(165deg,rgba(27,27,27,0.9) 0%,rgba(27,27,27,0.5) 45%, rgba(255,255,255,0.1) 50%,rgba(27,27,27,0.5) 55%,rgba(27,27,27,0.9) 100%)",
   }
   const footerStyle = {
-    background: "linear-gradient(165deg,#daf2dc, #4d5198)",
-    fontSize: "24px",
+    background: "linear-gradient(white , rgba(0,0,0,0.7))",
+    fontSize: "32px",
     color: "white",
+    height: "4vh",
   }
   const modaleMsg = "Employee Created"
   const headerMsg = "HrNet Saved"
