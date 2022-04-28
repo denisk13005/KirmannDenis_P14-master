@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import Form from "../../components/Form/Form"
-// import Modal from "../../components/Modal/Modal"
 import { Modal } from "dk_modale_package"
 
 import "./createEmployee.scss"
@@ -12,17 +11,18 @@ const CreateEmployee = () => {
   const toggleModal = () => {
     modalIsOpen ? setModalIsOpen(false) : setModalIsOpen(true)
   }
+
   const headerStyle = {
     background: "linear-gradient(rgba(0,0,0,0.7) , white )",
-    fontSize: "18px",
-    height: "6vh",
+    fontSize: "32px",
+    height: "4vh",
     color: "white",
   }
   const modalContainerStyle = {
     background: "white",
-    fontSize: "32px",
+    fontSize: "48px",
     color: "black",
-    height: "20vh",
+    height: "15vh",
   }
   const backgroundModalContainerStyle = {
     background:
@@ -30,8 +30,9 @@ const CreateEmployee = () => {
   }
   const footerStyle = {
     background: "linear-gradient(white , rgba(0,0,0,0.7))",
-    fontSize: "24px",
+    fontSize: "32px",
     color: "white",
+    height: "4vh",
   }
   const modaleMsg = "Employee Created"
   const headerMsg = "HrNet Saved"
