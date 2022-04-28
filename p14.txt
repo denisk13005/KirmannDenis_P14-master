@@ -5,3 +5,7 @@ Modale :
 s'affiche si tous les champs remplis sont corrects
 reste affichée tant qu'on ne la ferme pas 
 vide les champs lorsque qu'on la ferme
+
+useTable ===> hook de démarrage de react table, pour l'utiliser il faut lui passer un objet contenant une liste des colonnes et une liste de data  ces listes doivent etre mémoîsées à l'aide de useMemo 
+
+useMemo ===> Renvoie une valeur mémoïsée , recalculera la valeur que si l'une de ses entrées a changé(tableau ou fonction de création), évite les calculs à chaque rendu
