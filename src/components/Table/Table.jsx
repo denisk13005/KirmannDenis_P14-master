@@ -139,9 +139,7 @@ function Table() {
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
             style={
-              !canPreviousPage
-                ? { color: "transparent", display: "none" }
-                : { color: "darkBlue" }
+              !canPreviousPage ? { color: "lightGrey" } : { color: "darkBlue" }
             }
           >
             Previous
@@ -151,11 +149,7 @@ function Table() {
             id="next"
             onClick={() => nextPage()}
             disabled={!canNextPage}
-            style={
-              canNextPage
-                ? { color: "darkBlue" }
-                : { color: "transparent", display: "none" }
-            }
+            style={canNextPage ? { color: "darkBlue" } : { color: "lightGrey" }}
           >
             Next
           </span>
