@@ -80,7 +80,7 @@ function Table() {
 
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       </div>
-      {employees ? (
+      {employees.length ? (
         <table {...getTableProps()} className="tableContainer">
           <thead>
             {headerGroups.map((headerGroup) => (
