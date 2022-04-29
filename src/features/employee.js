@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { informations } from "../mocks/datas"
 import { getDbInfos } from "../utils/getDbInformations"
 
 /**
@@ -23,7 +22,7 @@ const employeesSlice = createSlice({
   //nom du slice
   name: "employees",
   initialState: {
-    informations: informations,
+    informations: [],
     modalIsOpen: false,
   },
   reducers: {
@@ -43,7 +42,7 @@ const employeesSlice = createSlice({
   extraReducers: {
     [fetchDbEmployees.fulfilled]: (state, { payload }) => {
       console.log(payload)
-      state.informations = [...state.informations, ...payload]
+      state.informations = [...payload]
       return state
     },
   },

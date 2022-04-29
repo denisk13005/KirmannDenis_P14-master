@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getDocs } from "firebase/firestore"
-import { employeesCollectionRef } from "../../utils/firebase.config"
-import { getDbInfos } from "../../utils/getDbInformations"
-import { fetchDbEmployees, getDbEmployees } from "../../features/employee"
+import { fetchDbEmployees } from "../../features/employee"
+import Loader from "../Loader/Loader"
 import {
   useTable,
   useSortBy,
   useGlobalFilter,
   usePagination,
 } from "react-table"
-// import mock from "../../mocks/mock.json"
+
 import columns from "../Columns"
 import "./table.scss"
 import GlobalFilter from "../GlobalFilter/GlobalFilter"
@@ -25,6 +24,7 @@ const dataColumns = columns
 
 function Table() {
   const employees = useSelector((state) => state.employees.informations)
+
   const dispatch = useDispatch()
 
   const getEmployees = async () => {
@@ -80,54 +80,61 @@ function Table() {
 
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       </div>
-
-      <table {...getTableProps()} className="tableContainer">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr
-              {...headerGroup.getHeaderGroupProps()}
-              style={{
-                backgroundColor: "transparent",
-                cursor: "pointer",
-              }}
-            >
-              {headerGroup.headers.map((column) => (
-                <th
-                  className="column"
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  style={{
-                    fontWeight: "bold",
-                  }}
-                >
-                  {column.render("Header")}
-                  <span>
-                    {" "}
-                    {column.isSorted ? (column.isSortedDesc ? "🔽" : "🔼") : ""}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-
-        <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row)
-
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td className="column" {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
-                  )
-                })}
+      {employees ? (
+        <table {...getTableProps()} className="tableContainer">
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr
+                {...headerGroup.getHeaderGroupProps()}
+                style={{
+                  backgroundColor: "transparent",
+                  cursor: "pointer",
+                }}
+              >
+                {headerGroup.headers.map((column) => (
+                  <th
+                    className="column"
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    style={{
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {column.render("Header")}
+                    <span>
+                      {" "}
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? "🔽"
+                          : "🔼"
+                        : ""}
+                    </span>
+                  </th>
+                ))}
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
+            ))}
+          </thead>
+
+          <tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row)
+
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td className="column" {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <Loader />
+      )}
       <div className="tabFooter">
         <span>
           Showing {pageIndex + 1} to {pageOptions.length} of {employees.length}{" "}
