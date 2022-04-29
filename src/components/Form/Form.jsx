@@ -29,7 +29,11 @@ const Form = ({ toggleModal }) => {
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
+  console.log(typeof birth)
 
+  /**
+   * @returns new employee to add to the employees collection
+   */
   const createUser = async () => {
     await addDoc(employeesCollectionRef, {
       firstName,
@@ -46,7 +50,7 @@ const Form = ({ toggleModal }) => {
 
   /**
    *update birth date when chosen
-   * @param {object} date birthday date
+   * @param {string} date birthday date
    *
    */
   const updateBirth = (date) => {
@@ -55,7 +59,7 @@ const Form = ({ toggleModal }) => {
 
   /**
    *update start date when chosen
-   * @param {object} date start date
+   * @param {string} date start date
    */
   const updateStart = (date) => {
     setStart(date)
@@ -168,7 +172,7 @@ const Form = ({ toggleModal }) => {
             name="street"
             id="street"
             value={street}
-            onChange={(e) => setStreet(e.target.value.trim())}
+            onChange={(e) => setStreet(e.target.value)}
             required
           />
           <label htmlFor="city">City</label>
@@ -178,7 +182,7 @@ const Form = ({ toggleModal }) => {
             name="city"
             id="city"
             value={city}
-            onChange={(e) => setCity(e.target.value.trim())}
+            onChange={(e) => setCity(e.target.value)}
             required
           />
           <label htmlFor="state">State</label>

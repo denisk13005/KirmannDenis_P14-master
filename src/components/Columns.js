@@ -1,3 +1,4 @@
+import { format } from "date-fns"
 const columns = [
   {
     Header: "First name",
@@ -13,17 +14,19 @@ const columns = [
     Header: "Birthday",
 
     accessor: "birth",
-    // Cell: ({ value }) => {
-    //   return value
-    // },
+    Cell: ({ value }) => {
+      console.log(new Date(value))
+      return format(new Date(value), "dd/MM/yyyy")
+    },
   },
   {
     Header: "Start Date",
 
     accessor: "start",
-    // Cell: ({ value }) => {
-    //   return value
-    // },
+    Cell: ({ value }) => {
+      console.log(new Date(value))
+      return format(new Date(value), "dd/MM/yyyy")
+    },
   },
   {
     Header: "Street",
