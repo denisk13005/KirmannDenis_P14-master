@@ -129,7 +129,7 @@ const Form = ({ toggleModal }) => {
           name="firstName"
           id="firstName"
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(e) => setFirstName(e.target.value.trim())}
           required
         />
         <label htmlFor="lastName">Last Name</label>
@@ -139,7 +139,7 @@ const Form = ({ toggleModal }) => {
           name="lastName"
           id="lastName"
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value.trim())}
           required
         />
         <label htmlFor="birth">Date Of Birth</label>
@@ -168,7 +168,7 @@ const Form = ({ toggleModal }) => {
             name="street"
             id="street"
             value={street}
-            onChange={(e) => setStreet(e.target.value)}
+            onChange={(e) => setStreet(e.target.value.trim())}
             required
           />
           <label htmlFor="city">City</label>
@@ -178,7 +178,7 @@ const Form = ({ toggleModal }) => {
             name="city"
             id="city"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setCity(e.target.value.trim())}
             required
           />
           <label htmlFor="state">State</label>
@@ -200,7 +200,7 @@ const Form = ({ toggleModal }) => {
             name="zip"
             id="zip"
             value={zip}
-            onChange={(e) => setZip(e.target.value)}
+            onChange={(e) => setZip(e.target.value.trim())}
             required
           />
         </fieldset>
