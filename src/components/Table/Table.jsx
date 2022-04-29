@@ -58,6 +58,7 @@ function Table() {
   const { globalFilter, pageIndex, pageSize } = state
 
   const itemsOnPage = [1, 10, 25, 50, 100]
+  console.log(pageIndex, employees.length)
 
   return (
     <>
@@ -137,11 +138,25 @@ function Table() {
             id="previous"
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
+            style={
+              !canPreviousPage
+                ? { color: "transparent", display: "none" }
+                : { color: "darkBlue" }
+            }
           >
             Previous
           </span>
           <span className="pageNumber">{pageIndex + 1}</span>
-          <span id="next" onClick={() => nextPage()} disabled={!canNextPage}>
+          <span
+            id="next"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+            style={
+              canNextPage
+                ? { color: "darkBlue" }
+                : { color: "transparent", display: "none" }
+            }
+          >
             Next
           </span>
         </div>
