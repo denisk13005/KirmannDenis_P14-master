@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
 import { addEmployee } from "../../features/employee"
@@ -6,6 +6,8 @@ import DateSelector from "../DateSelector/DateSelector.js"
 import SelectComponent from "../Select/SelectComponent.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
+import { employeesCollectionRef } from "../../utils/firebase.config"
+import { addDoc } from "firebase/firestore"
 import "./form.scss"
 const optionsDept = departments.map((el) => ({
   value: el,
@@ -27,6 +29,20 @@ const Form = ({ toggleModal }) => {
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
+
+  const createUser = async () => {
+    await addDoc(employeesCollectionRef, {
+      firstName,
+      lastName,
+      birth,
+      start,
+      street,
+      city,
+      state,
+      zip,
+      dept,
+    })
+  }
 
   /**
    *update birth date when chosen
@@ -83,19 +99,20 @@ const Form = ({ toggleModal }) => {
   const saveEmployee = (e) => {
     e.preventDefault()
 
-    dispatch(
-      addEmployee({
-        firstName: firstName,
-        lastName: lastName,
-        birth: birth,
-        start: start,
-        street: street,
-        city: city,
-        state: state,
-        zip: zip,
-        dept: dept,
-      })
-    )
+    // dispatch(
+    //   addEmployee({
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     birth: birth,
+    //     start: start,
+    //     street: street,
+    //     city: city,
+    //     state: state,
+    //     zip: zip,
+    //     dept: dept,
+    //   })
+    // )
+    createUser()
     //modal de confirmation
     toggleModal()
     fieldReset()
@@ -112,7 +129,7 @@ const Form = ({ toggleModal }) => {
           name="firstName"
           id="firstName"
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(e) => setFirstName(e.target.value.trim())}
           required
         />
         <label htmlFor="lastName">Last Name</label>
@@ -122,7 +139,7 @@ const Form = ({ toggleModal }) => {
           name="lastName"
           id="lastName"
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value.trim())}
           required
         />
         <label htmlFor="birth">Date Of Birth</label>
@@ -151,7 +168,7 @@ const Form = ({ toggleModal }) => {
             name="street"
             id="street"
             value={street}
-            onChange={(e) => setStreet(e.target.value)}
+            onChange={(e) => setStreet(e.target.value.trim())}
             required
           />
           <label htmlFor="city">City</label>
@@ -161,7 +178,7 @@ const Form = ({ toggleModal }) => {
             name="city"
             id="city"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => setCity(e.target.value.trim())}
             required
           />
           <label htmlFor="state">State</label>
@@ -183,7 +200,7 @@ const Form = ({ toggleModal }) => {
             name="zip"
             id="zip"
             value={zip}
-            onChange={(e) => setZip(e.target.value)}
+            onChange={(e) => setZip(e.target.value.trim())}
             required
           />
         </fieldset>

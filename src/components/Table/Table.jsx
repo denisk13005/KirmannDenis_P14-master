@@ -1,12 +1,15 @@
-import React from "react"
-import { useSelector } from "react-redux"
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchDbEmployees } from "../../features/employee"
+import Loader from "../Loader/Loader"
 import {
   useTable,
   useSortBy,
   useGlobalFilter,
   usePagination,
 } from "react-table"
-// import mock from "../../mocks/mock.json"
+
 import columns from "../Columns"
 import "./table.scss"
 import GlobalFilter from "../GlobalFilter/GlobalFilter"
@@ -21,6 +24,18 @@ const dataColumns = columns
 
 function Table() {
   const employees = useSelector((state) => state.employees.informations)
+
+  const dispatch = useDispatch()
+
+  const getEmployees = async () => {
+    dispatch(fetchDbEmployees())
+  }
+
+  useEffect(() => {
+    getEmployees()
+  }, [])
+
+  console.log(employees)
 
   const data = React.useMemo(() => employees, [employees]) // recalculate the memorized value only if employees has changed
   const columns = React.useMemo(() => dataColumns, [])
@@ -43,6 +58,7 @@ function Table() {
   const { globalFilter, pageIndex, pageSize } = state
 
   const itemsOnPage = [1, 10, 25, 50, 100]
+  console.log(pageIndex, employees.length)
 
   return (
     <>
@@ -64,54 +80,61 @@ function Table() {
 
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       </div>
-
-      <table {...getTableProps()} className="tableContainer">
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr
-              {...headerGroup.getHeaderGroupProps()}
-              style={{
-                backgroundColor: "transparent",
-                cursor: "pointer",
-              }}
-            >
-              {headerGroup.headers.map((column) => (
-                <th
-                  className="column"
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  style={{
-                    fontWeight: "bold",
-                  }}
-                >
-                  {column.render("Header")}
-                  <span>
-                    {" "}
-                    {column.isSorted ? (column.isSortedDesc ? "🔽" : "🔼") : ""}
-                  </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-
-        <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
-            prepareRow(row)
-
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td className="column" {...cell.getCellProps()}>
-                      {cell.render("Cell")}
-                    </td>
-                  )
-                })}
+      {employees.length ? (
+        <table {...getTableProps()} className="tableContainer">
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr
+                {...headerGroup.getHeaderGroupProps()}
+                style={{
+                  backgroundColor: "transparent",
+                  cursor: "pointer",
+                }}
+              >
+                {headerGroup.headers.map((column) => (
+                  <th
+                    className="column"
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    style={{
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {column.render("Header")}
+                    <span>
+                      {" "}
+                      {column.isSorted
+                        ? column.isSortedDesc
+                          ? "🔽"
+                          : "🔼"
+                        : ""}
+                    </span>
+                  </th>
+                ))}
               </tr>
-            )
-          })}
-        </tbody>
-      </table>
+            ))}
+          </thead>
+
+          <tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+              prepareRow(row)
+
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td className="column" {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      ) : (
+        <Loader />
+      )}
       <div className="tabFooter">
         <span>
           Showing {pageIndex + 1} to {pageOptions.length} of {employees.length}{" "}
@@ -122,11 +145,19 @@ function Table() {
             id="previous"
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
+            style={
+              !canPreviousPage ? { color: "lightGrey" } : { color: "darkBlue" }
+            }
           >
             Previous
           </span>
           <span className="pageNumber">{pageIndex + 1}</span>
-          <span id="next" onClick={() => nextPage()} disabled={!canNextPage}>
+          <span
+            id="next"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+            style={canNextPage ? { color: "darkBlue" } : { color: "lightGrey" }}
+          >
             Next
           </span>
         </div>

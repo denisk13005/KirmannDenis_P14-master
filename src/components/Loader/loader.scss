@@ -1,0 +1,18 @@
+.loaderContainer {
+  width: 20px;
+  height: 20px;
+  border: 5px solid transparent;
+  border-right: 5px solid darkblue;
+  border-top: 5px solid darkblue;
+  border-radius: 50%;
+  display: block;
+  animation: turn 0.1s linear infinite;
+}
+@keyframes turn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
