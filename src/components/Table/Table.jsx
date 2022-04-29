@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { getDocs } from "firebase/firestore"
 import { employeesCollectionRef } from "../../utils/firebase.config"
+import { getDbInfos } from "../../utils/getDbInformations"
+import { fetchDbEmployees, getDbEmployees } from "../../features/employee"
 import {
   useTable,
   useSortBy,
@@ -22,19 +24,17 @@ const dataColumns = columns
  */
 
 function Table() {
-  // const employees = useSelector((state) => state.employees.informations)
-  const [employees, setEmployeesTest] = useState([])
-
-  // const employeesCollectionRef = collection(db, "employees")
+  const employees = useSelector((state) => state.employees.informations)
+  const dispatch = useDispatch()
 
   const getEmployees = async () => {
-    const data = await getDocs(employeesCollectionRef)
-    setEmployeesTest(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    dispatch(fetchDbEmployees())
   }
 
   useEffect(() => {
     getEmployees()
   }, [])
+
   console.log(employees)
 
   const data = React.useMemo(() => employees, [employees]) // recalculate the memorized value only if employees has changed

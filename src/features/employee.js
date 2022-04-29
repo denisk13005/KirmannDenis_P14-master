@@ -1,5 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { informations } from "../mocks/datas"
+import { getDbInfos } from "../utils/getDbInformations"
+
+/**
+ * async thunk who fetch de employees saved in the db
+ */
+export const fetchDbEmployees = createAsyncThunk(
+  "employees/fetchDbEmployees",
+  async () => {
+    let datas = await getDbInfos()
+    return datas
+  }
+)
 
 /**
  * employeeSlice
@@ -28,7 +40,15 @@ const employeesSlice = createSlice({
       return state
     },
   },
+  extraReducers: {
+    [fetchDbEmployees.fulfilled]: (state, { payload }) => {
+      console.log(payload)
+      state.informations = [...state.informations, ...payload]
+      return state
+    },
+  },
 })
 
-export const { addEmployee, openModal, closeModal } = employeesSlice.actions
+export const { addEmployee, openModal, closeModal, getDbEmployees } =
+  employeesSlice.actions
 export default employeesSlice.reducer
