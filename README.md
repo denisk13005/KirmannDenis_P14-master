@@ -1,10 +1,14 @@
 # Wealth Health
 
-## Made By Kirmann Denis
+## Made By Kirmann Denis :muscle:
 
 ### Framework && Technos
 
 ![JavaScript](https://img.shields.io/badge/Language-JS-yellow) ![REACT](https://img.shields.io/badge/Framework-React-blue) ![SASS](https://img.shields.io/badge/Style-SASS-ff69b4) ![Firebase](https://img.shields.io/badge/Deploy-Firebase-yellow) ![Redux](https://img.shields.io/badge/Library-ReduxToolkit-blueviolet) ![Bdd](https://img.shields.io/badge/Bdd-Firebase-yellow)
+
+### Description
+
+This project use modal npm package make by me and react-table, react-datepicker and react-select packages
 
 # Getting Started with Create React App
 
