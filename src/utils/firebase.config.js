@@ -1,19 +1,22 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "@firebase/firestore"
 const firebaseConfig = {
-  apiKey: "AIzaSyBIt7TfqYQF7xCKddViRF03yg9SRQHJe_s",
+  apiKey: "AIzaSyAoPNhegflVO-Z36Bb3lRwCgcphojBUK5o",
 
-  authDomain: "argent-bank-kd.firebaseapp.com",
+  authDomain: "wealth-health-dk.firebaseapp.com",
 
-  projectId: "argent-bank-kd",
+  databaseURL:
+    "https://wealth-health-dk-default-rtdb.europe-west1.firebasedatabase.app",
 
-  storageBucket: "argent-bank-kd.appspot.com",
+  projectId: "wealth-health-dk",
 
-  messagingSenderId: "829164940158",
+  storageBucket: "wealth-health-dk.appspot.com",
 
-  appId: "1:829164940158:web:e9106b30d3b46226bf612f",
+  messagingSenderId: "236483992111",
 
-  measurementId: "G-N9E5K1GMYY",
+  appId: "1:236483992111:web:65219898fedcc7328e84da",
+
+  measurementId: "G-79HZBNFWDZ",
 }
 
 const app = initializeApp(firebaseConfig)
