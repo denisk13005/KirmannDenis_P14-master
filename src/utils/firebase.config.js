@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { getFirestore } from "@firebase/firestore"
+import { getFirestore, collection } from "@firebase/firestore"
 const firebaseConfig = {
   apiKey: "AIzaSyAoPNhegflVO-Z36Bb3lRwCgcphojBUK5o",
 
@@ -18,6 +18,9 @@ const firebaseConfig = {
 
   measurementId: "G-79HZBNFWDZ",
 }
-
+//app initialization
 const app = initializeApp(firebaseConfig)
+//bd initialization
 export const db = getFirestore(app)
+//collection definition
+export const employeesCollectionRef = collection(db, "employees")

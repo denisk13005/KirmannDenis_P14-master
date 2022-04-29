@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
 import { addEmployee } from "../../features/employee"
@@ -6,6 +6,8 @@ import DateSelector from "../DateSelector/DateSelector.js"
 import SelectComponent from "../Select/SelectComponent.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
+import { employeesCollectionRef } from "../../utils/firebase.config"
+import { addDoc } from "firebase/firestore"
 import "./form.scss"
 const optionsDept = departments.map((el) => ({
   value: el,
@@ -27,6 +29,20 @@ const Form = ({ toggleModal }) => {
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
+
+  const createUser = async () => {
+    await addDoc(employeesCollectionRef, {
+      firstName,
+      lastName,
+      birth,
+      start,
+      street,
+      city,
+      state,
+      zip,
+      dept,
+    })
+  }
 
   /**
    *update birth date when chosen
@@ -83,19 +99,20 @@ const Form = ({ toggleModal }) => {
   const saveEmployee = (e) => {
     e.preventDefault()
 
-    dispatch(
-      addEmployee({
-        firstName: firstName,
-        lastName: lastName,
-        birth: birth,
-        start: start,
-        street: street,
-        city: city,
-        state: state,
-        zip: zip,
-        dept: dept,
-      })
-    )
+    // dispatch(
+    //   addEmployee({
+    //     firstName: firstName,
+    //     lastName: lastName,
+    //     birth: birth,
+    //     start: start,
+    //     street: street,
+    //     city: city,
+    //     state: state,
+    //     zip: zip,
+    //     dept: dept,
+    //   })
+    // )
+    createUser()
     //modal de confirmation
     toggleModal()
     fieldReset()
