@@ -35,8 +35,6 @@ function Table() {
     getEmployees()
   }, [])
 
-  console.log(employees)
-
   const data = React.useMemo(() => employees, [employees]) // recalculate the memorized value only if employees has changed
   const columns = React.useMemo(() => dataColumns, [])
 
@@ -55,10 +53,10 @@ function Table() {
     state,
     setGlobalFilter,
   } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination)
+
   const { globalFilter, pageIndex, pageSize } = state
 
   const itemsOnPage = [1, 10, 25, 50, 100]
-  console.log(pageIndex, employees.length)
 
   return (
     <>

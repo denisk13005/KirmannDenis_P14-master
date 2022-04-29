@@ -41,7 +41,6 @@ const employeesSlice = createSlice({
   },
   extraReducers: {
     [fetchDbEmployees.fulfilled]: (state, { payload }) => {
-      console.log(payload)
       state.informations = [...payload]
       return state
     },

@@ -15,10 +15,11 @@ const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
+          console.log(date.toISOString())
           setselectedDate(date)
           id === "birth"
-            ? updateBirth(date.toLocaleDateString())
-            : updateStart(date.toLocaleDateString())
+            ? updateBirth(date.toISOString())
+            : updateStart(date.toISOString())
         }}
         className="input"
         id={id}
