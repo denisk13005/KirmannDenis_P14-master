@@ -1,18 +1,22 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
-import { addEmployee } from "../../features/employee"
+// import { addEmployee } from "../../features/employee"
 import DateSelector from "../DateSelector/DateSelector.js"
 import SelectComponent from "../Select/SelectComponent.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
-import { employeesCollectionRef } from "../../utils/firebase.config"
-import { addDoc } from "firebase/firestore"
+import { createUser } from "../../utils/getDbInformations"
+// import { employeesCollectionRef } from "../../utils/firebase.config"
+// import { addDoc } from "firebase/firestore"
 import "./form.scss"
+
+//option for selectComponent
 const optionsDept = departments.map((el) => ({
   value: el,
   label: el,
 }))
+
 /**
  * Form component
  * @returns {ReactComponentElement} form for add employee
@@ -29,24 +33,36 @@ const Form = ({ toggleModal }) => {
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
-  console.log(typeof birth)
+
+  //employee to add in db
+  let employee = {
+    firstName,
+    lastName,
+    birth,
+    start,
+    street,
+    city,
+    state,
+    zip,
+    dept,
+  }
 
   /**
    * @returns new employee to add to the employees collection
    */
-  const createUser = async () => {
-    await addDoc(employeesCollectionRef, {
-      firstName,
-      lastName,
-      birth,
-      start,
-      street,
-      city,
-      state,
-      zip,
-      dept,
-    })
-  }
+  // const createUser = async () => {
+  //   await addDoc(employeesCollectionRef, {
+  //     firstName,
+  //     lastName,
+  //     birth,
+  //     start,
+  //     street,
+  //     city,
+  //     state,
+  //     zip,
+  //     dept,
+  //   })
+  // }
 
   /**
    *update birth date when chosen
@@ -116,7 +132,7 @@ const Form = ({ toggleModal }) => {
     //     dept: dept,
     //   })
     // )
-    createUser()
+    createUser(employee)
     //modal de confirmation
     toggleModal()
     fieldReset()
@@ -220,6 +236,7 @@ const Form = ({ toggleModal }) => {
     </div>
   )
 }
+
 Form.propTypes = {
   toggleModal: PropTypes.func.isRequired,
 }
