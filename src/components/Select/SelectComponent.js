@@ -2,7 +2,7 @@ import React from "react"
 import Select from "react-select"
 import PropTypes from "prop-types"
 import "./selectComponent.scss"
-const SelectComponent = ({ options, id, update }) => {
+const SelectComponent = ({ options, update }) => {
   return (
     <Select
       options={options}
@@ -16,8 +16,6 @@ const SelectComponent = ({ options, id, update }) => {
 
 SelectComponent.propTypes = {
   options: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
-  updateDepartment: PropTypes.func,
-  updateState: PropTypes.func,
+  update: PropTypes.func.isRequired,
 }
 export default SelectComponent

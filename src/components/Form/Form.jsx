@@ -209,7 +209,6 @@ const Form = ({ toggleModal }) => {
           <label htmlFor="state">State</label>
 
           <SelectComponent
-            id="state"
             options={states.map((el) => ({
               value: el.abbreviation,
               label: el.name,
@@ -231,11 +230,7 @@ const Form = ({ toggleModal }) => {
         </fieldset>
         <label htmlFor="department">Department</label>
 
-        <SelectComponent
-          id="departement"
-          options={optionsDept}
-          update={updateDepartment}
-        />
+        <SelectComponent options={optionsDept} update={updateDepartment} />
         <SelectDk datas={optionsDept} setValue={setDk} />
         <SelectDk
           datas={states.map((el) => ({
