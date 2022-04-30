@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { getDbInfos } from "../utils/getDbInformations"
+import { getDbInfos } from "../utils/apiDbFiresbase"
 
 /**
  * async thunk who fetch de employees saved in the db
@@ -26,10 +26,10 @@ const employeesSlice = createSlice({
     modalIsOpen: false,
   },
   reducers: {
-    addEmployee: (state, action) => {
-      state.informations = [...state.informations, action.payload]
-      return state
-    },
+    // addEmployee: (state, action) => {
+    //   state.informations = [...state.informations, action.payload]
+    //   return state
+    // },
     openModal: (state) => {
       state.modalIsOpen = true
       return state
