@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import SelectDk from "../SelectDk/SelectDk"
 import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
 // import { addEmployee } from "../../features/employee"
@@ -34,6 +35,9 @@ const Form = ({ toggleModal }) => {
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
 
+  const [dk, setDk] = useState("")
+  const [dkState, setDkState] = useState("")
+  console.log(state, dept)
   //employee to add in db
   let employee = {
     firstName,
@@ -118,6 +122,7 @@ const Form = ({ toggleModal }) => {
    */
   const saveEmployee = (e) => {
     e.preventDefault()
+    console.log(employee)
 
     // dispatch(
     //   addEmployee({
@@ -132,11 +137,11 @@ const Form = ({ toggleModal }) => {
     //     dept: dept,
     //   })
     // )
-    createUser(employee)
-    //modal de confirmation
-    toggleModal()
-    fieldReset()
-    setResetValue(true)
+    // createUser(employee)
+    // //modal de confirmation
+    // toggleModal()
+    // fieldReset()
+    // setResetValue(true)
   }
 
   return (
@@ -150,7 +155,7 @@ const Form = ({ toggleModal }) => {
           id="firstName"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value.trim())}
-          required
+          // required
         />
         <label htmlFor="lastName">Last Name</label>
         <input
@@ -160,7 +165,7 @@ const Form = ({ toggleModal }) => {
           id="lastName"
           value={lastName}
           onChange={(e) => setLastName(e.target.value.trim())}
-          required
+          // required
         />
         <label htmlFor="birth">Date Of Birth</label>
 
@@ -168,7 +173,7 @@ const Form = ({ toggleModal }) => {
           id="birth"
           updateBirth={updateBirth}
           resetValue={resetValue}
-          required
+          // required
         />
         <label htmlFor="start">Start Date</label>
 
@@ -176,7 +181,7 @@ const Form = ({ toggleModal }) => {
           id="start"
           updateStart={updateStart}
           resetValue={resetValue}
-          required
+          // required
         />
 
         <fieldset className="address">
@@ -189,7 +194,7 @@ const Form = ({ toggleModal }) => {
             id="street"
             value={street}
             onChange={(e) => setStreet(e.target.value)}
-            required
+            // required
           />
           <label htmlFor="city">City</label>
           <input
@@ -199,7 +204,7 @@ const Form = ({ toggleModal }) => {
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
-            required
+            // required
           />
           <label htmlFor="state">State</label>
 
@@ -209,8 +214,8 @@ const Form = ({ toggleModal }) => {
               value: el.abbreviation,
               label: el.name,
             }))}
-            updateState={updateState}
-            required
+            update={updateState}
+            // required
           />
 
           <label htmlFor="zip">Zip Code</label>
@@ -221,7 +226,7 @@ const Form = ({ toggleModal }) => {
             id="zip"
             value={zip}
             onChange={(e) => setZip(e.target.value.trim())}
-            required
+            // required
           />
         </fieldset>
         <label htmlFor="department">Department</label>
@@ -229,7 +234,15 @@ const Form = ({ toggleModal }) => {
         <SelectComponent
           id="departement"
           options={optionsDept}
-          updateDepartment={updateDepartment}
+          update={updateDepartment}
+        />
+        <SelectDk datas={optionsDept} setValue={setDk} />
+        <SelectDk
+          datas={states.map((el) => ({
+            value: el.name,
+            label: el.abbreviation,
+          }))}
+          setValue={setDkState}
         />
         <input className="saveBtn" type="submit" value="Save" />
       </form>
