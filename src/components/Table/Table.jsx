@@ -102,11 +102,7 @@ function Table() {
                     {column.render("Header")}
                     <span>
                       {" "}
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? "🔽"
-                          : "🔼"
-                        : ""}
+                      {column.isSorted ? (column.isSortedDesc ? "▿" : "▵") : ""}
                     </span>
                   </th>
                 ))}
