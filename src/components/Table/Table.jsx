@@ -55,6 +55,8 @@ function Table() {
   } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination)
 
   const { globalFilter, pageIndex, pageSize } = state
+  globalFilter && console.log(globalFilter.length)
+  page && console.log(page.length)
 
   const itemsOnPage = [1, 10, 25, 50, 100]
 
@@ -113,21 +115,25 @@ function Table() {
           </thead>
 
           <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
-              prepareRow(row)
+            {page.length === 0 ? (
+              <div className="noMatch">Aucune correspondance</div>
+            ) : (
+              page.map((row) => {
+                prepareRow(row)
 
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td className="column" {...cell.getCellProps()}>
-                        {cell.render("Cell")}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => {
+                      return (
+                        <td className="column" {...cell.getCellProps()}>
+                          {cell.render("Cell")}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )
+              })
+            )}
           </tbody>
         </table>
       ) : (

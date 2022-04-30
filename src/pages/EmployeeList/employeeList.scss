@@ -36,5 +36,13 @@
     width: 900px;
     display: flex;
     justify-content: space-around;
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+      margin-bottom: 100px;
+      a {
+        font-size: 18px;
+        margin: 10px auto;
+      }
+    }
   }
 }

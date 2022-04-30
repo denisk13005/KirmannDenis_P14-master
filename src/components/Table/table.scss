@@ -36,9 +36,12 @@
 
 .tableContainer {
   border-bottom: 1px solid $darkBlue;
-  width: 900px;
+  width: 100%;
   border-collapse: collapse;
   color: $darkBlue;
+  @media screen and (max-width: 900px) {
+    font-size: 8px;
+  }
   thead {
     tr {
       border-bottom: 1px solid $darkBlue;
@@ -46,9 +49,11 @@
     }
   }
   th {
-    min-width: 5vw;
     min-width: max-content;
     padding: 0px 10px;
+    @media screen and (max-width: 900px) {
+      min-width: auto;
+    }
   }
 
   tr:nth-child(odd) {
@@ -56,10 +61,21 @@
   }
 
   tbody {
+    border: 2px solid red;
     td {
       height: 4vh;
       padding-left: 10px;
     }
+    .noMatch {
+      display: inline-block;
+      width: max-content;
+      font-size: 24px;
+      text-align: center;
+      margin: 5% 140%;
+    }
+  }
+  .column {
+    text-align: center;
   }
 }
 
