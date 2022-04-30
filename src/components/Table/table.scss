@@ -5,6 +5,17 @@
   width: 900px;
   margin-bottom: 20px;
   color: $darkBlue;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    .selectPageSize {
+      span {
+        font-size: 15px;
+      }
+      select {
+        width: auto;
+      }
+    }
+  }
   span {
     font-size: 20px;
   }
@@ -22,13 +33,25 @@
     }
   }
   .search {
+    @media screen and(max-width :900px) {
+      font-size: 15px;
+    }
     input {
       border: none;
       border-radius: 5px;
       color: $lightBlue;
       font-weight: bold;
+      width: 9vw;
+      height: 2vh;
       &:focus {
         outline: 2px solid $lightPink;
+      }
+      @media screen and (max-width: 900px) {
+        width: 20vw;
+        font-size: 8px;
+        &:focus {
+          outline: 0.1px solid $lightPink;
+        }
       }
     }
   }
@@ -37,6 +60,7 @@
 .tableContainer {
   border-bottom: 1px solid $darkBlue;
   width: 100%;
+  max-width: 900px;
   border-collapse: collapse;
   color: $darkBlue;
   @media screen and (max-width: 900px) {
