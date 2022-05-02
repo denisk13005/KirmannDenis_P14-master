@@ -232,13 +232,13 @@ const Form = ({ toggleModal }) => {
 
         {/* <SelectComponent options={optionsDept} update={updateDepartment} /> */}
         <SelectDk datas={optionsDept} setValue={updateDepartment} />
-        <SelectDk
+        {/* <SelectDk
           datas={states.map((el) => ({
             value: el.abbreviation,
             label: el.name,
           }))}
           setValue={updateState}
-        />
+        /> */}
         <input className="saveBtn" type="submit" value="Save" />
       </form>
     </div>

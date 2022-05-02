@@ -9,4 +9,14 @@
     outline: 3px solid pink;
     border: none;
   }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.optionsContainer {
+  display: none;
+}
+.open {
+  display: block;
 }
