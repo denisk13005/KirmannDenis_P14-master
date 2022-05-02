@@ -208,14 +208,14 @@ const Form = ({ toggleModal }) => {
           />
           <label htmlFor="state">State</label>
 
-          <SelectComponent
+          {/* <SelectComponent
             options={states.map((el) => ({
               value: el.abbreviation,
               label: el.name,
             }))}
             update={updateState}
             // required
-          />
+          /> */}
 
           <label htmlFor="zip">Zip Code</label>
           <input
@@ -230,14 +230,14 @@ const Form = ({ toggleModal }) => {
         </fieldset>
         <label htmlFor="department">Department</label>
 
-        <SelectComponent options={optionsDept} update={updateDepartment} />
-        <SelectDk datas={optionsDept} setValue={setDk} />
+        {/* <SelectComponent options={optionsDept} update={updateDepartment} /> */}
+        <SelectDk datas={optionsDept} setValue={updateDepartment} />
         <SelectDk
           datas={states.map((el) => ({
-            value: el.name,
-            label: el.abbreviation,
+            value: el.abbreviation,
+            label: el.name,
           }))}
-          setValue={setDkState}
+          setValue={updateState}
         />
         <input className="saveBtn" type="submit" value="Save" />
       </form>
