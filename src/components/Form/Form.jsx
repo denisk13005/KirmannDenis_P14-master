@@ -225,6 +225,14 @@ const Form = ({ toggleModal }) => {
             update={updateState}
             // required
           /> */}
+          <SelectDk
+            datas={states.map((el) => ({
+              value: el.abbreviation,
+              label: el.name,
+            }))}
+            update={updateStateDk}
+            children={childrenState}
+          />
 
           <label htmlFor="zip">Zip Code</label>
           <input
@@ -246,14 +254,7 @@ const Form = ({ toggleModal }) => {
           children={dept}
           update={updateDepartment}
         />
-        <SelectDk
-          datas={states.map((el) => ({
-            value: el.abbreviation,
-            label: el.name,
-          }))}
-          update={updateStateDk}
-          children={childrenState}
-        />
+
         <input className="saveBtn" type="submit" value="Save" />
       </form>
     </div>

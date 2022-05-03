@@ -12,15 +12,13 @@ const SelectDk = (props) => {
   return (
     <div
       role="listbox"
-      style={{
-        // position: "relative",
-        zIndex: 1,
-      }}
+      style={props.listboxStyle}
       id={props.id}
       className="selectDk"
       onClick={toggle}
     >
-      {props.children}
+      <span className="children">{props.children}</span>
+
       <div className={!open ? "optionsContainer" : "open"} style={{}}>
         {props.datas.map((data, index) => {
           return (
