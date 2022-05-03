@@ -35,8 +35,17 @@ const Form = ({ toggleModal }) => {
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
 
-  const [dk, setDk] = useState("")
-  const [dkState, setDkState] = useState("")
+  // ----------------------essai du composant select avec div--------------------
+  // const [dk, setDk] = useState("")
+  // const [dkState, setDkState] = useState("")
+  const [childrenState, setChildrenState] = useState("Alabama")
+
+  const updateStateDk = (value) => {
+    let stateUpdated = states.filter((el) => el.name === value)
+    setState(stateUpdated[0].abbreviation)
+    setChildrenState(value)
+  }
+
   console.log(state, dept)
   //employee to add in db
   let employee = {
@@ -231,14 +240,20 @@ const Form = ({ toggleModal }) => {
         <label htmlFor="department">Department</label>
 
         {/* <SelectComponent options={optionsDept} update={updateDepartment} /> */}
-        <SelectDk datas={optionsDept} setValue={updateDepartment} />
-        {/* <SelectDk
+        <SelectDk
+          datas={optionsDept}
+          setValue={updateDepartment}
+          children={dept}
+          update={updateDepartment}
+        />
+        <SelectDk
           datas={states.map((el) => ({
             value: el.abbreviation,
             label: el.name,
           }))}
-          setValue={updateState}
-        /> */}
+          update={updateStateDk}
+          children={childrenState}
+        />
         <input className="saveBtn" type="submit" value="Save" />
       </form>
     </div>

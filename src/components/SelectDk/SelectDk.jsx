@@ -1,55 +1,36 @@
-import React from "react"
+import React, { useState } from "react"
 import "./selectDk.scss"
 
 const SelectDk = (props) => {
   console.log(props.datas)
+  const [open, setopen] = useState(false)
 
-  const openContainer = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    e.target.childNodes[1].classList.add("open")
-  }
-
-  const closeContainer = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-    e.target.parentElement.classList.remove("open")
+  const toggle = () => {
+    open ? setopen(false) : setopen(true)
   }
 
   return (
     <div
       role="listbox"
       style={{
-        backgroundColor: "blue",
-        position: "relative",
+        // position: "relative",
         zIndex: 1,
-        border: "1px solid pink",
       }}
       id={props.id}
       className="selectDk"
-      onClick={openContainer}
+      onClick={toggle}
     >
-      parent
-      <div
-        className="optionsContainer"
-        style={{
-          backgroundColor: "yellow",
-          border: "1px solid red",
-          position: "absolute",
-          top: 40,
-          width: "100%",
-          height: "auto",
-          lineHeight: "200%",
-          zIndex: 3,
-        }}
-      >
+      {props.children}
+      <div className={!open ? "optionsContainer" : "open"} style={{}}>
         {props.datas.map((data, index) => {
           return (
             <div
-              onClick={closeContainer}
+              onClick={(toggle, (e) => props.update(e.target.innerHTML))}
               value={data.value}
               style={props.optionStyle}
               key={index}
+              className="options"
+              id="options"
             >
               {data.label}
             </div>
