@@ -36,8 +36,10 @@
     background-color: #4d5198;
     z-index: 100;
     scrollbar-color: #daf2dc #4d5198;
+
     // transform: scale(1);
     transition: transform 0.3s;
+    border-radius: 5px;
   }
 
   .options {

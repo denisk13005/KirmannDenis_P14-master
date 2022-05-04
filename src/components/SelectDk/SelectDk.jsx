@@ -12,7 +12,7 @@ const SelectDk = (props) => {
   return (
     <div
       role="listbox"
-      style={props.listboxStyle}
+      style={props.listBoxStyle}
       id={props.id}
       className="selectDk"
       onClick={toggle}
@@ -27,17 +27,29 @@ const SelectDk = (props) => {
               aria-selected
               onClick={(toggle, (e) => props.update(e.target.innerHTML))}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor =
-                  props.hoverOptionsStyle.backgroundColor
-                e.target.style.color = props.hoverOptionsStyle.color
+                if (props.hoverOptionsStyle) {
+                  e.target.style.backgroundColor =
+                    props.hoverOptionsStyle.backgroundColor
+                  e.target.style.color = props.hoverOptionsStyle.color
+                } else if (props.optionStyle) {
+                  e.target.style.backgroundColor =
+                    props.optionsStyle.backgroundColor
+                  e.target.style.color = props.optionsStyle.color
+                } else {
+                  return
+                }
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor =
-                  props.optionStyle.backgroundColor
-                e.target.style.color = props.optionStyle.color
+                if (props.optionsStyle) {
+                  e.target.style.backgroundColor =
+                    props.optionsStyle.backgroundColor
+                  e.target.style.color = props.optionsStyle.color
+                } else {
+                  return
+                }
               }}
               value={data.value}
-              style={props.optionStyle}
+              style={props.optionsStyle}
               key={index}
               className="options"
               id="options"
