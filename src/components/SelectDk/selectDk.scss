@@ -21,7 +21,10 @@
     cursor: pointer;
   }
   .optionsContainer {
-    display: none;
+    transform: scale(0);
+    transition: transform 0.3s;
+    max-height: 20vh;
+    overflow: auto;
   }
   .open {
     position: relative;
@@ -33,6 +36,8 @@
     background-color: #4d5198;
     z-index: 100;
     scrollbar-color: #daf2dc #4d5198;
+    // transform: scale(1);
+    transition: transform 0.3s;
   }
 
   .options {
@@ -49,5 +54,19 @@
       background-color: #daf2dc;
       color: #4d5198;
     }
+  }
+  .arrowUp {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-45%);
+    transition: transform 0.3s;
+  }
+  .arrowDown {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transition: transform 0.3s;
+    transform: translateY(-55%) rotate(180deg);
   }
 }

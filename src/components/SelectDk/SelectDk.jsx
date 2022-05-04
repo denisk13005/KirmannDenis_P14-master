@@ -62,6 +62,7 @@ const SelectDk = (props) => {
             )
           })}
       </select> */}
+      <span className={!open ? "arrowUp" : "arrowDown"}>^</span>
     </div>
   )
 }

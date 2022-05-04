@@ -234,7 +234,7 @@ const Form = ({ toggleModal }) => {
             children={childrenState}
             optionStyle={{
               backgroundColor: "darkBlue",
-              color: "red",
+              color: "pink",
             }}
             hoverOptionsStyle={{
               backgroundColor: "lightGreen",
