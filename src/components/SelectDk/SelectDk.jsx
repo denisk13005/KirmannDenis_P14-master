@@ -23,7 +23,19 @@ const SelectDk = (props) => {
         {props.datas.map((data, index) => {
           return (
             <div
+              role="option"
+              aria-selected
               onClick={(toggle, (e) => props.update(e.target.innerHTML))}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor =
+                  props.hoverOptionsStyle.backgroundColor
+                e.target.style.color = props.hoverOptionsStyle.color
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor =
+                  props.optionStyle.backgroundColor
+                e.target.style.color = props.optionStyle.color
+              }}
               value={data.value}
               style={props.optionStyle}
               key={index}

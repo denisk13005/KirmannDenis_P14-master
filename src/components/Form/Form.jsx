@@ -232,6 +232,14 @@ const Form = ({ toggleModal }) => {
             }))}
             update={updateStateDk}
             children={childrenState}
+            optionStyle={{
+              backgroundColor: "darkBlue",
+              color: "red",
+            }}
+            hoverOptionsStyle={{
+              backgroundColor: "lightGreen",
+              color: "white",
+            }}
           />
 
           <label htmlFor="zip">Zip Code</label>
