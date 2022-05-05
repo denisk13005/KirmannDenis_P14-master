@@ -37,6 +37,8 @@
   }
 
   .react-datepicker {
+    z-index: 20;
+    position: relative;
     &__header {
       background: linear-gradient(
         175deg,

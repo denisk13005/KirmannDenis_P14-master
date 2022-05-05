@@ -15,7 +15,6 @@ const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
-          console.log(date.toISOString())
           setselectedDate(date)
           id === "birth"
             ? updateBirth(date.toISOString())
