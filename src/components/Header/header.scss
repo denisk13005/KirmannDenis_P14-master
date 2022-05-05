@@ -3,14 +3,12 @@
 .homeHeader {
   display: flex;
   justify-content: space-between;
-  background-color: $darkBlue;
+  background-color: $lightGreen;
   padding: 0px 50px;
 
   h2 {
     border-top: none;
     color: $darkBlue;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: $lightGreen;
     font-size: 54px;
     font-family: Georgia, "Times New Roman", Times, serif;
     @media screen and (max-width: 600px) {
@@ -22,8 +20,6 @@
   .home {
     border-top: none;
     color: $darkBlue;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-color: $lightGreen;
     font-size: 54px;
     font-family: Georgia, "Times New Roman", Times, serif;
     margin: 0;

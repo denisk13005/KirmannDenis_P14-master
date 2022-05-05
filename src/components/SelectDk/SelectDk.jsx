@@ -29,29 +29,7 @@ const SelectDk = (props) => {
             <div
               role="option"
               aria-selected
-              onClick={(toggle, (e) => props.update(e.target.innerHTML))}
-              // onMouseEnter={(e) => {
-              //   if (props.hoverOptionsStyle) {
-              //     e.target.style.backgroundColor =
-              //       props.hoverOptionsStyle.backgroundColor
-              //     e.target.style.color = props.hoverOptionsStyle.color
-              //   } else if (props.optionStyle) {
-              //     e.target.style.backgroundColor =
-              //       props.optionsStyle.backgroundColor
-              //     e.target.style.color = props.optionsStyle.color
-              //   } else {
-              //     return
-              //   }
-              // }}
-              // onMouseLeave={(e) => {
-              //   if (props.optionsStyle) {
-              //     e.target.style.backgroundColor =
-              //       props.optionsStyle.backgroundColor
-              //     e.target.style.color = props.optionsStyle.color
-              //   } else {
-              //     return
-              //   }
-              // }}
+              onClick={(toggle, () => props.update(data))}
               style={props.optionsStyle}
               key={index}
               className="options"
@@ -62,21 +40,7 @@ const SelectDk = (props) => {
           )
         })}
       </div>
-      {/* <select
-        style={props.selectStyle}
-        id={props.id}
-        className="selectDk"
-        onChange={(e) => props.setValue(e.target.value)}
-      >
-        {props.datas &&
-          props.datas.map((data, index) => {
-            return (
-              <option value={data.value} style={props.optionStyle} key={index}>
-                {data.label}
-              </option>
-            )
-          })}
-      </select> */}
+
       <span className={!open ? "arrowUp" : "arrowDown"}>^</span>
     </div>
   )

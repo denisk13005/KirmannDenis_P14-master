@@ -14,14 +14,7 @@
   );
 }
 #title {
-  background: linear-gradient(
-    to right,
-    $darkBlue 0%,
-    $lightBlue 50%,
-    $lightGreen 70%
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: $darkBlue;
 }
 
 #viewCurrentEmployee {

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { getDbInfos } from "../utils/apiDbFiresbase"
 
 /**
- * async thunk who fetch de employees saved in the db
+ * async thunk who fetch de employees saved in the firestore db
  */
 export const fetchDbEmployees = createAsyncThunk(
   "employees/fetchDbEmployees",
