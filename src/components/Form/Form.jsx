@@ -77,7 +77,7 @@ const Form = ({ toggleModal }) => {
    * @param {string} department
    */
   const updateDepartment = (department) => {
-    setDept(department)
+    setDept(department.label)
   }
 
   /**
