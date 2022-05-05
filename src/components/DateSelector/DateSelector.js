@@ -35,6 +35,7 @@ DateSelector.propTypes = {
   id: PropTypes.string.isRequired,
   updateBirth: PropTypes.func,
   updateStart: PropTypes.func,
+  resetValue: PropTypes.bool,
 }
 export default DateSelector
 //
