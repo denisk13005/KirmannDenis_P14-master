@@ -110,6 +110,9 @@ const Form = ({ toggleModal }) => {
     setDept(department)
   }
 
+  /**
+   * This function resets the state of the form fields to empty strings.
+   */
   const fieldReset = () => {
     setFirstName("")
     setLastName("")
@@ -233,13 +236,17 @@ const Form = ({ toggleModal }) => {
             }))}
             update={updateStateDk}
             children={childrenState}
+            // listBoxStyle={{ color: "white", background: "black" }}
+            // optionsContainerStyle={{
+            //   scrollbarColor: " darkBlue pink",
+            // }}
             // optionsStyle={{
-            //   backgroundColor: "red",
-            //   color: "white",
+            //   backgroundColor: "darkBlue",
+            //   color: "pink",
             // }}
             // hoverOptionsStyle={{
             //   backgroundColor: "lightGreen",
-            //   color: "white",
+            //   color: "black",
             // }}
           />
 

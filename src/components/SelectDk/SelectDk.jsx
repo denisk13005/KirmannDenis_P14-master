@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import "./selectDk.scss"
+/* A function that returns a div. */
 
 const SelectDk = (props) => {
   console.log(props.datas)
@@ -19,36 +20,38 @@ const SelectDk = (props) => {
     >
       <span className="children">{props.children}</span>
 
-      <div className={!open ? "optionsContainer" : "open"} style={{}}>
+      <div
+        className={!open ? "optionsContainer" : "open"}
+        style={props.optionsContainerStyle}
+      >
         {props.datas.map((data, index) => {
           return (
             <div
               role="option"
               aria-selected
               onClick={(toggle, (e) => props.update(e.target.innerHTML))}
-              onMouseEnter={(e) => {
-                if (props.hoverOptionsStyle) {
-                  e.target.style.backgroundColor =
-                    props.hoverOptionsStyle.backgroundColor
-                  e.target.style.color = props.hoverOptionsStyle.color
-                } else if (props.optionStyle) {
-                  e.target.style.backgroundColor =
-                    props.optionsStyle.backgroundColor
-                  e.target.style.color = props.optionsStyle.color
-                } else {
-                  return
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (props.optionsStyle) {
-                  e.target.style.backgroundColor =
-                    props.optionsStyle.backgroundColor
-                  e.target.style.color = props.optionsStyle.color
-                } else {
-                  return
-                }
-              }}
-              value={data.value}
+              // onMouseEnter={(e) => {
+              //   if (props.hoverOptionsStyle) {
+              //     e.target.style.backgroundColor =
+              //       props.hoverOptionsStyle.backgroundColor
+              //     e.target.style.color = props.hoverOptionsStyle.color
+              //   } else if (props.optionStyle) {
+              //     e.target.style.backgroundColor =
+              //       props.optionsStyle.backgroundColor
+              //     e.target.style.color = props.optionsStyle.color
+              //   } else {
+              //     return
+              //   }
+              // }}
+              // onMouseLeave={(e) => {
+              //   if (props.optionsStyle) {
+              //     e.target.style.backgroundColor =
+              //       props.optionsStyle.backgroundColor
+              //     e.target.style.color = props.optionsStyle.color
+              //   } else {
+              //     return
+              //   }
+              // }}
               style={props.optionsStyle}
               key={index}
               className="options"
