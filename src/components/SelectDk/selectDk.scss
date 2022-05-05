@@ -8,6 +8,7 @@
   display: block;
   background-color: #4d5198;
   margin: 10px auto;
+
   .children {
     margin-left: 5px;
     line-height: 3.5vh;
@@ -59,14 +60,14 @@
   }
   .arrowUp {
     position: absolute;
-    right: 20px;
+    right: 15px;
     top: 50%;
     transform: translateY(-45%);
     transition: transform 0.3s;
   }
   .arrowDown {
     position: absolute;
-    right: 20px;
+    right: 15px;
     top: 50%;
     transition: transform 0.3s;
     transform: translateY(-55%) rotate(180deg);
