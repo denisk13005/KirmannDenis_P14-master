@@ -1,15 +1,11 @@
 import React, { useState } from "react"
 import SelectDk from "../SelectDk/SelectDk"
-// import { useDispatch } from "react-redux"
 import { states } from "../../mocks/states"
-// import { addEmployee } from "../../features/employee"
 import DateSelector from "../DateSelector/DateSelector.js"
-// import SelectComponent from "../Select/SelectComponent.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createUser } from "../../utils/apiDbFiresbase"
-// import { employeesCollectionRef } from "../../utils/firebase.config"
-// import { addDoc } from "firebase/firestore"
+
 import "./form.scss"
 
 //option for selectComponent
@@ -60,23 +56,6 @@ const Form = ({ toggleModal }) => {
   }
 
   /**
-   * @returns new employee to add to the employees collection
-   */
-  // const createUser = async () => {
-  //   await addDoc(employeesCollectionRef, {
-  //     firstName,
-  //     lastName,
-  //     birth,
-  //     start,
-  //     street,
-  //     city,
-  //     state,
-  //     zip,
-  //     dept,
-  //   })
-  // }
-
-  /**
    *update birth date when chosen
    * @param {string} date birthday date
    *
@@ -92,14 +71,6 @@ const Form = ({ toggleModal }) => {
   const updateStart = (date) => {
     setStart(date)
   }
-
-  // /**
-  //  * update state when chosen
-  //  * @param {string} state chosen state
-  //  */
-  // const updateState = (state) => {
-  //   setState(state)
-  // }
 
   /**
    * update department when chosen
@@ -133,23 +104,7 @@ const Form = ({ toggleModal }) => {
    */
   const saveEmployee = (e) => {
     e.preventDefault()
-    console.log(employee)
-
-    // dispatch(
-    //   addEmployee({
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //     birth: birth,
-    //     start: start,
-    //     street: street,
-    //     city: city,
-    //     state: state,
-    //     zip: zip,
-    //     dept: dept,
-    //   })
-    // )
     createUser(employee)
-    //modal de confirmation
     toggleModal()
     fieldReset()
     setResetValue(true)
