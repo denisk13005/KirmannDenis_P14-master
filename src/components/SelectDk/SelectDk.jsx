@@ -1,9 +1,11 @@
 import React, { useState } from "react"
+import PropTypes from "prop-types"
 import "./selectDk.scss"
+
 /* A function that returns a div. */
 
 const SelectDk = (props) => {
-  console.log(props.datas)
+  console.log(typeof props.datas)
   const [open, setopen] = useState(false)
 
   const toggle = () => {
@@ -18,7 +20,7 @@ const SelectDk = (props) => {
       className="selectDk"
       onClick={toggle}
     >
-      <span className="children">{props.children}</span>
+      <span className="children">{props.child}</span>
 
       <div
         className={!open ? "optionsContainer" : "open"}
@@ -44,6 +46,16 @@ const SelectDk = (props) => {
       <span className={!open ? "arrowUp" : "arrowDown"}>^</span>
     </div>
   )
+}
+
+SelectDk.propTypes = {
+  listBoxStyle: PropTypes.object,
+  id: PropTypes.string,
+  child: PropTypes.string,
+  datas: PropTypes.array,
+  optionsContainerStyle: PropTypes.object,
+  update: PropTypes.func.isRequired,
+  optionsStyle: PropTypes.object,
 }
 
 export default SelectDk

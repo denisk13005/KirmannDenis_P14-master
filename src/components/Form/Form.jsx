@@ -4,7 +4,7 @@ import SelectDk from "../SelectDk/SelectDk"
 import { states } from "../../mocks/states"
 // import { addEmployee } from "../../features/employee"
 import DateSelector from "../DateSelector/DateSelector.js"
-import SelectComponent from "../Select/SelectComponent.js"
+// import SelectComponent from "../Select/SelectComponent.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createUser } from "../../utils/apiDbFiresbase"
@@ -234,7 +234,7 @@ const Form = ({ toggleModal }) => {
               label: el.name,
             }))}
             update={updateStateDk}
-            children={childrenState}
+            child={childrenState}
             // listBoxStyle={{ color: "white", background: "black" }}
             // optionsContainerStyle={{
             //   scrollbarColor: " darkBlue pink",
@@ -266,7 +266,7 @@ const Form = ({ toggleModal }) => {
         <SelectDk
           datas={optionsDept}
           setValue={updateDepartment}
-          children={dept}
+          child={dept}
           update={updateDepartment}
         />
 

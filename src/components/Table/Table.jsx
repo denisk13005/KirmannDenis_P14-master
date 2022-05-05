@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchDbEmployees } from "../../features/employee"
@@ -83,16 +82,18 @@ function Table() {
       {employees.length ? (
         <table {...getTableProps()} className="tableContainer">
           <thead>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup, index) => (
               <tr
+                key={index}
                 {...headerGroup.getHeaderGroupProps()}
                 style={{
                   backgroundColor: "transparent",
                   cursor: "pointer",
                 }}
               >
-                {headerGroup.headers.map((column) => (
+                {headerGroup.headers.map((column, index) => (
                   <th
+                    key={index}
                     className="column"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     style={{
@@ -114,14 +115,18 @@ function Table() {
             {page.length === 0 ? (
               <div className="noMatch">Aucune correspondance</div>
             ) : (
-              page.map((row) => {
+              page.map((row, index) => {
                 prepareRow(row)
 
                 return (
-                  <tr {...row.getRowProps()}>
-                    {row.cells.map((cell) => {
+                  <tr key={index} {...row.getRowProps()}>
+                    {row.cells.map((cell, index) => {
                       return (
-                        <td className="column" {...cell.getCellProps()}>
+                        <td
+                          key={index}
+                          className="column"
+                          {...cell.getCellProps()}
+                        >
                           {cell.render("Cell")}
                         </td>
                       )
