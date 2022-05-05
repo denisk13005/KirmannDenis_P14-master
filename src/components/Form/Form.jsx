@@ -40,9 +40,8 @@ const Form = ({ toggleModal }) => {
   const [childrenState, setChildrenState] = useState("Alabama")
 
   const updateStateDk = (value) => {
-    let stateUpdated = states.filter((el) => el.name === value)
-    setState(stateUpdated[0].abbreviation)
-    setChildrenState(value)
+    setState(value.value)
+    setChildrenState(value.label)
   }
 
   console.log(state, dept)
@@ -94,13 +93,13 @@ const Form = ({ toggleModal }) => {
     setStart(date)
   }
 
-  /**
-   * update state when chosen
-   * @param {string} state chosen state
-   */
-  const updateState = (state) => {
-    setState(state)
-  }
+  // /**
+  //  * update state when chosen
+  //  * @param {string} state chosen state
+  //  */
+  // const updateState = (state) => {
+  //   setState(state)
+  // }
 
   /**
    * update department when chosen
