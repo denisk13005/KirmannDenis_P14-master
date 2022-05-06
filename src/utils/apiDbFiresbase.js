@@ -16,6 +16,5 @@ export const getEmployees = async () => {
  * @param employee - {
  */
 export const createEmployee = async (employee) => {
-  console.log(typeof birth)
   await addDoc(employeesCollectionRef, employee)
 }
