@@ -138,7 +138,7 @@ const Form = ({ toggleModal }) => {
 
         <DateSelector
           id="birth"
-          updateBirth={updateBirth}
+          update={updateBirth}
           resetValue={resetValue}
           required
         />
@@ -146,7 +146,7 @@ const Form = ({ toggleModal }) => {
 
         <DateSelector
           id="start"
-          updateStart={updateStart}
+          update={updateStart}
           resetValue={resetValue}
           required
         />
