@@ -6,7 +6,7 @@ import { employeesCollectionRef } from "./firebase.config"
  * document data and the document id
  * @returns An array of objects.
  */
-export const getDbInfos = async () => {
+export const getEmployees = async () => {
   const data = await getDocs(employeesCollectionRef)
   return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
 }
@@ -15,7 +15,7 @@ export const getDbInfos = async () => {
  * It takes an object as an argument, and then it adds that object to a collection in Firestore.
  * @param employee - {
  */
-export const createUser = async (employee) => {
+export const createEmployee = async (employee) => {
   console.log(typeof birth)
   await addDoc(employeesCollectionRef, employee)
 }

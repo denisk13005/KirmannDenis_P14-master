@@ -4,7 +4,7 @@ import { states } from "../../mocks/states"
 import DateSelector from "../DateSelector/DateSelector.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
-import { createUser } from "../../utils/apiDbFiresbase"
+import { createEmployee } from "../../utils/apiDbFiresbase"
 
 import "./form.scss"
 
@@ -104,7 +104,7 @@ const Form = ({ toggleModal }) => {
    */
   const saveEmployee = (e) => {
     e.preventDefault()
-    createUser(employee)
+    createEmployee(employee)
     toggleModal()
     fieldReset()
     setResetValue(true)
