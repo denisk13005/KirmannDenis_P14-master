@@ -2,7 +2,11 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import "./selectDk.scss"
 
-/* A function that returns a div. */
+/**
+ *
+ * @param {*} props all the props for select component
+ * @returns customisable select component
+ */
 
 const SelectDk = (props) => {
   console.log(typeof props.datas)
@@ -43,7 +47,12 @@ const SelectDk = (props) => {
         })}
       </div>
 
-      <span className={!open ? "arrowUp" : "arrowDown"}>^</span>
+      <span
+        style={props.arrowStyle}
+        className={!open ? "arrowUp" : "arrowDown"}
+      >
+        ^
+      </span>
     </div>
   )
 }
@@ -56,6 +65,7 @@ SelectDk.propTypes = {
   optionsContainerStyle: PropTypes.object,
   update: PropTypes.func.isRequired,
   optionsStyle: PropTypes.object,
+  arrowStyle: PropTypes.object,
 }
 
 export default SelectDk

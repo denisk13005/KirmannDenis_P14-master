@@ -16,14 +16,7 @@
     margin: 20px 0px;
     font-family: serif;
     margin: 40px auto;
-    background: linear-gradient(
-      to right,
-      $darkBlue 0%,
-      $lightBlue 50%,
-      $lightGreen 130%
-    );
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: $darkBlue;
   }
   a {
     font-size: 36px;
