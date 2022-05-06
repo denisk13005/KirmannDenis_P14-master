@@ -5,7 +5,8 @@ import AuthModal from "../../components/AuthModal/AuthModal"
 import "./home.scss"
 
 const Home = () => {
-  const adminLoggedIn = useSelector((state) => state.adminLoggedIn)
+  const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
+
   return (
     <main id="homeContainer">
       {adminLoggedIn ? (

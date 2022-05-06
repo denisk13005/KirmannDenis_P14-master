@@ -39,6 +39,10 @@ const employeesSlice = createSlice({
       state.modalIsOpen = false
       return state
     },
+    log: (state) => {
+      state.adminLoggedIn = true
+      return state
+    },
   },
   extraReducers: {
     [fetchDbEmployees.fulfilled]: (state, { payload }) => {
@@ -48,6 +52,6 @@ const employeesSlice = createSlice({
   },
 })
 
-export const { addEmployee, openModal, closeModal, getDbEmployees } =
+export const { addEmployee, openModal, closeModal, getDbEmployees, log } =
   employeesSlice.actions
 export default employeesSlice.reducer
