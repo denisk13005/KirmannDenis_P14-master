@@ -24,6 +24,7 @@ const employeesSlice = createSlice({
   initialState: {
     informations: [],
     modalIsOpen: false,
+    adminLoggedIn: false,
   },
   reducers: {
     // addEmployee: (state, action) => {
