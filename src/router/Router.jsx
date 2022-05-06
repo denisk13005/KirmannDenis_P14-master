@@ -5,6 +5,7 @@ import Header from "../components/Header/Header"
 import CreateEmployee from "../pages/CreateEmployee/CreateEmployee"
 import EmployeeList from "../pages/EmployeeList/EmployeeList"
 import Home from "../pages/Home/Home"
+import NotFound from "../pages/Not Found/NotFound"
 
 const routes = () => {
   return (
@@ -14,6 +15,7 @@ const routes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/CreateEmployee" element={<CreateEmployee />} />
         <Route path="/employeeList" element={<EmployeeList />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

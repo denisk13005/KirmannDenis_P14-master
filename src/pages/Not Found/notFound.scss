@@ -1,0 +1,29 @@
+@import "../../sass/utils/variables.scss";
+.notFound {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(216, 216, 216) 99%
+  );
+  color: $darkBlue;
+  img {
+    width: 20%;
+    margin-top: 50px;
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom: 50px;
+    color: $lightBlue;
+  }
+  p {
+    font-size: 78px;
+    margin-bottom: 50px;
+  }
+  a {
+    margin: 0;
+  }
+}
