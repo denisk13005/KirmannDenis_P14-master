@@ -1,13 +1,23 @@
-import React from "react"
-import { useDispatch } from "react-redux"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+// import { useDispatch } from "react-redux"
 import "./authModal.scss"
-import { log } from "../../features/employee"
+import { signInAuth } from "../../utils/apiDbFiresbase"
+// import { log } from "../../features/employee"
 
 const AuthModal = () => {
-  const dispatch = useDispatch()
-  const logged = (e) => {
+  const [errorMessage, setErrorMessage] = useState("")
+  const navigate = useNavigate()
+  // const dispatch = useDispatch()
+  const logged = async (e) => {
     e.preventDefault()
-    dispatch(log())
+    const auth = await signInAuth("test@test.com", "password")
+    if (auth.accessToken) {
+      navigate("/CreateEmployee")
+      setErrorMessage("")
+    } else {
+      setErrorMessage(auth)
+    }
   }
 
   return (
@@ -17,6 +27,7 @@ const AuthModal = () => {
         <input type="text" name="userName" id="userName" />
         <label htmlFor="userName">Password</label>
         <input type="password" name="userName" id="userName" />
+        <span className="error">{errorMessage}</span>
         <input type="submit" />
       </form>
     </div>

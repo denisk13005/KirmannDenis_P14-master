@@ -1,5 +1,7 @@
 import { getDocs, addDoc } from "firebase/firestore"
 import { employeesCollectionRef } from "./firebase.config"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../utils/firebase.config"
 
 /**
  * It gets all the documents from the employees collection and returns an array of objects with the
@@ -17,4 +19,15 @@ export const getEmployees = async () => {
  */
 export const createEmployee = async (employee) => {
   await addDoc(employeesCollectionRef, employee)
+}
+
+const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
+
+export const signInAuth = async (email, password) => {
+  try {
+    const resp = await signIn(email, password)
+    return resp.user
+  } catch (error) {
+    return error.code
+  }
 }
