@@ -39,8 +39,12 @@ const employeesSlice = createSlice({
       state.modalIsOpen = false
       return state
     },
-    log: (state) => {
+    logIn: (state) => {
       state.adminLoggedIn = true
+      return state
+    },
+    logOut: (state) => {
+      state.adminLoggedIn = false
       return state
     },
   },
@@ -52,6 +56,12 @@ const employeesSlice = createSlice({
   },
 })
 
-export const { addEmployee, openModal, closeModal, getDbEmployees, log } =
-  employeesSlice.actions
+export const {
+  addEmployee,
+  openModal,
+  closeModal,
+  getDbEmployees,
+  logIn,
+  logOut,
+} = employeesSlice.actions
 export default employeesSlice.reducer

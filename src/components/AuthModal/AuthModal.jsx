@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import "./authModal.scss"
 import { signInAuth } from "../../utils/apiDbFiresbase"
-import { log } from "../../features/employee"
+import { logIn } from "../../features/employee"
 
 const AuthModal = () => {
   const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
@@ -19,7 +19,7 @@ const AuthModal = () => {
   const getAuth = async (userName, password) => {
     const auth = await signInAuth(userName, password)
     if (auth.accessToken) {
-      dispatch(log())
+      dispatch(logIn())
       setErrorMessage("")
     } else {
       setErrorMessage(auth.split("/")[1])
