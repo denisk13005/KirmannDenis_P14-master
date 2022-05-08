@@ -6,8 +6,8 @@ import { log } from "../../features/employee"
 
 const AuthModal = () => {
   const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
-  const [userName, setUserName] = useState(" ")
-  const [password, setPassword] = useState("")
+  const [userName, setUserName] = useState("test@test.com")
+  const [password, setPassword] = useState("password")
   const [errorMessage, setErrorMessage] = useState("")
   const dispatch = useDispatch()
   const logged = async (e) => {
