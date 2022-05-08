@@ -2,6 +2,7 @@ import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import logoutPng from "../../assets/img/logout.png"
+import { logOut } from "../../features/employee"
 import "./header.scss"
 
 const Header = () => {
@@ -20,7 +21,7 @@ const Header = () => {
           <NavLink
             className="logoutNavlink"
             to="/"
-            onClick={() => dispatch(logout())}
+            onClick={() => dispatch(logOut())}
           >
             <img src={logoutPng} />
             <h2>Logout</h2>

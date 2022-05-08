@@ -27,10 +27,6 @@ const employeesSlice = createSlice({
     adminLoggedIn: false,
   },
   reducers: {
-    // addEmployee: (state, action) => {
-    //   state.informations = [...state.informations, action.payload]
-    //   return state
-    // },
     openModal: (state) => {
       state.modalIsOpen = true
       return state
