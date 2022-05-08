@@ -110,12 +110,11 @@ function Table() {
               </tr>
             ))}
           </thead>
-
-          <tbody {...getTableBodyProps()}>
-            {page.length === 0 ? (
-              <div className="noMatch">Aucune correspondance</div>
-            ) : (
-              page.map((row, index) => {
+          {page.length === 0 ? (
+            <div className="noMatch">Aucune Correspondance</div>
+          ) : (
+            <tbody {...getTableBodyProps()}>
+              {page.map((row, index) => {
                 prepareRow(row)
 
                 return (
@@ -133,9 +132,9 @@ function Table() {
                     })}
                   </tr>
                 )
-              })
-            )}
-          </tbody>
+              })}
+            </tbody>
+          )}
         </table>
       ) : (
         <Loader />
