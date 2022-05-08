@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import PropTypes from "prop-types"
 
-const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
+const DateSelector = ({ id, update, resetValue }) => {
   const [selectedDate, setselectedDate] = useState(null)
   useEffect(() => {
     resetValue && setselectedDate(null)
@@ -15,11 +15,8 @@ const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
       <DatePicker
         selected={selectedDate}
         onChange={(date) => {
-          console.log(date.toISOString())
           setselectedDate(date)
-          id === "birth"
-            ? updateBirth(date.toISOString())
-            : updateStart(date.toISOString())
+          date && update(date.toDateString())
         }}
         className="input"
         id={id}
@@ -34,8 +31,8 @@ const DateSelector = ({ id, updateBirth, updateStart, resetValue }) => {
 }
 DateSelector.propTypes = {
   id: PropTypes.string.isRequired,
-  updateBirth: PropTypes.func,
-  updateStart: PropTypes.func,
+  update: PropTypes.func,
+  resetValue: PropTypes.bool,
 }
 export default DateSelector
 //

@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink } from "react-router-dom"
 import "./header.scss"
 
-const Header = (props) => {
+const Header = () => {
   return (
     <header className="homeHeader">
       <NavLink className="home" to="/">

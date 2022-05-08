@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { getDbInfos } from "../utils/getDbInformations"
+import { getEmployees } from "../utils/apiDbFiresbase"
 
 /**
- * async thunk who fetch de employees saved in the db
+ * async thunk who fetch de employees saved in the firestore db
  */
 export const fetchDbEmployees = createAsyncThunk(
   "employees/fetchDbEmployees",
   async () => {
-    let datas = await getDbInfos()
+    let datas = await getEmployees()
     return datas
   }
 )
@@ -24,18 +24,23 @@ const employeesSlice = createSlice({
   initialState: {
     informations: [],
     modalIsOpen: false,
+    adminLoggedIn: false,
   },
   reducers: {
-    addEmployee: (state, action) => {
-      state.informations = [...state.informations, action.payload]
-      return state
-    },
+    // addEmployee: (state, action) => {
+    //   state.informations = [...state.informations, action.payload]
+    //   return state
+    // },
     openModal: (state) => {
       state.modalIsOpen = true
       return state
     },
     closeModal: (state) => {
       state.modalIsOpen = false
+      return state
+    },
+    log: (state) => {
+      state.adminLoggedIn = true
       return state
     },
   },
@@ -47,6 +52,6 @@ const employeesSlice = createSlice({
   },
 })
 
-export const { addEmployee, openModal, closeModal, getDbEmployees } =
+export const { addEmployee, openModal, closeModal, getDbEmployees, log } =
   employeesSlice.actions
 export default employeesSlice.reducer

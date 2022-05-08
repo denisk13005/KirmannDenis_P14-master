@@ -5,6 +5,17 @@
   width: 900px;
   margin-bottom: 20px;
   color: $darkBlue;
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    .selectPageSize {
+      span {
+        font-size: 15px;
+      }
+      select {
+        width: auto;
+      }
+    }
+  }
   span {
     font-size: 20px;
   }
@@ -22,13 +33,25 @@
     }
   }
   .search {
+    @media screen and(max-width :900px) {
+      font-size: 15px;
+    }
     input {
       border: none;
       border-radius: 5px;
       color: $lightBlue;
       font-weight: bold;
+      width: 9vw;
+      height: 2vh;
       &:focus {
         outline: 2px solid $lightPink;
+      }
+      @media screen and (max-width: 900px) {
+        width: 20vw;
+        font-size: 8px;
+        &:focus {
+          outline: 0.1px solid $lightPink;
+        }
       }
     }
   }
@@ -36,9 +59,13 @@
 
 .tableContainer {
   border-bottom: 1px solid $darkBlue;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   border-collapse: collapse;
   color: $darkBlue;
+  @media screen and (max-width: 900px) {
+    font-size: 8px;
+  }
   thead {
     tr {
       border-bottom: 1px solid $darkBlue;
@@ -46,9 +73,11 @@
     }
   }
   th {
-    min-width: 5vw;
     min-width: max-content;
     padding: 0px 10px;
+    @media screen and (max-width: 900px) {
+      min-width: auto;
+    }
   }
 
   tr:nth-child(odd) {
@@ -60,6 +89,16 @@
       height: 4vh;
       padding-left: 10px;
     }
+    .noMatch {
+      display: inline-block;
+      width: max-content;
+      font-size: 24px;
+      text-align: center;
+      margin: 5% 140%;
+    }
+  }
+  .column {
+    text-align: center;
   }
 }
 
@@ -68,10 +107,17 @@
   justify-content: space-between;
   margin-top: 20px;
   font-size: 18px;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   color: $darkBlue;
+  @media screen and(max-width:900px) {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
   .pageBtns {
     display: flex;
+
     #next {
       width: 50px;
       background-color: transparent;
@@ -81,6 +127,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @media screen and(max-width:900px) {
+        font-size: 15px;
+      }
     }
     #previous {
       width: 50px;
@@ -91,6 +140,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      @media screen and(max-width:900px) {
+        font-size: 15px;
+      }
     }
   }
   .pageNumber {
@@ -109,5 +161,10 @@
     margin-left: 20px;
     border: 1px solid rgb(163, 163, 163);
     border-radius: 3px;
+    @media screen and(max-width:900px) {
+      font-size: 10px;
+      width: 15px;
+      height: 15px;
+    }
   }
 }

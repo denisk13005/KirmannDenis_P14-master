@@ -4,6 +4,7 @@
   // border: 1px solid grey;
   width: 100%;
   height: auto;
+  min-height: 75vh;
   margin: 0px auto;
   text-align: center;
   padding-bottom: 20px;
@@ -14,14 +15,12 @@
   );
 }
 #title {
-  background: linear-gradient(
-    to right,
-    $darkBlue 0%,
-    $lightBlue 50%,
-    $lightGreen 70%
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: $darkBlue;
+  font-size: 36px;
+  margin: 0;
+  border-top: 2px solid $lightBlue;
+  border-top-style: groove;
+  padding: 20px 0px 20px;
 }
 
 #viewCurrentEmployee {
@@ -34,12 +33,4 @@
   &:hover {
     color: $lightBlue;
   }
-}
-h2 {
-  font-size: 36px;
-  margin: 0;
-  border-top: 2px solid $lightBlue;
-  border-top-style: groove;
-  padding: 20px 0px 20px;
-  color: $lightBlue;
 }

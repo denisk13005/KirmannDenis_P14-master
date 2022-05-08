@@ -1,18 +1,19 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import SelectDk from "../SelectDk/SelectDk"
 import { states } from "../../mocks/states"
-import { addEmployee } from "../../features/employee"
 import DateSelector from "../DateSelector/DateSelector.js"
-import SelectComponent from "../Select/SelectComponent.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
-import { employeesCollectionRef } from "../../utils/firebase.config"
-import { addDoc } from "firebase/firestore"
+import { createEmployee } from "../../utils/apiDbFiresbase"
+
 import "./form.scss"
+
+//option for selectComponent
 const optionsDept = departments.map((el) => ({
   value: el,
   label: el,
 }))
+
 /**
  * Form component
  * @returns {ReactComponentElement} form for add employee
@@ -29,23 +30,29 @@ const Form = ({ toggleModal }) => {
   const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
-  console.log(typeof birth)
 
-  /**
-   * @returns new employee to add to the employees collection
-   */
-  const createUser = async () => {
-    await addDoc(employeesCollectionRef, {
-      firstName,
-      lastName,
-      birth,
-      start,
-      street,
-      city,
-      state,
-      zip,
-      dept,
-    })
+  // ----------------------essai du composant select avec div--------------------
+
+  const [childrenState, setChildrenState] = useState("Alabama")
+
+  const updateStateDk = (value) => {
+    setState(value.value)
+    setChildrenState(value.label)
+  }
+
+  console.log(state, dept)
+
+  //employee to add in db
+  let employee = {
+    firstName,
+    lastName,
+    birth,
+    start,
+    street,
+    city,
+    state,
+    zip,
+    dept,
   }
 
   /**
@@ -66,21 +73,16 @@ const Form = ({ toggleModal }) => {
   }
 
   /**
-   * update state when chosen
-   * @param {string} state chosen state
-   */
-  const updateState = (state) => {
-    setState(state)
-  }
-
-  /**
    * update department when chosen
    * @param {string} department
    */
   const updateDepartment = (department) => {
-    setDept(department)
+    setDept(department.label)
   }
 
+  /**
+   * This function resets the state of the form fields to empty strings.
+   */
   const fieldReset = () => {
     setFirstName("")
     setLastName("")
@@ -93,7 +95,7 @@ const Form = ({ toggleModal }) => {
     setDept("")
   }
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   /**
    * saveEmployee for add in current employees
@@ -102,22 +104,7 @@ const Form = ({ toggleModal }) => {
    */
   const saveEmployee = (e) => {
     e.preventDefault()
-
-    // dispatch(
-    //   addEmployee({
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //     birth: birth,
-    //     start: start,
-    //     street: street,
-    //     city: city,
-    //     state: state,
-    //     zip: zip,
-    //     dept: dept,
-    //   })
-    // )
-    createUser()
-    //modal de confirmation
+    createEmployee(employee)
     toggleModal()
     fieldReset()
     setResetValue(true)
@@ -135,6 +122,7 @@ const Form = ({ toggleModal }) => {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value.trim())}
           required
+          autoFocus
         />
         <label htmlFor="lastName">Last Name</label>
         <input
@@ -150,7 +138,7 @@ const Form = ({ toggleModal }) => {
 
         <DateSelector
           id="birth"
-          updateBirth={updateBirth}
+          update={updateBirth}
           resetValue={resetValue}
           required
         />
@@ -158,7 +146,7 @@ const Form = ({ toggleModal }) => {
 
         <DateSelector
           id="start"
-          updateStart={updateStart}
+          update={updateStart}
           resetValue={resetValue}
           required
         />
@@ -187,14 +175,33 @@ const Form = ({ toggleModal }) => {
           />
           <label htmlFor="state">State</label>
 
-          <SelectComponent
-            id="state"
+          {/* <SelectComponent
             options={states.map((el) => ({
               value: el.abbreviation,
               label: el.name,
             }))}
-            updateState={updateState}
-            required
+            update={updateState}
+            // required
+          /> */}
+          <SelectDk
+            datas={states.map((el) => ({
+              value: el.abbreviation,
+              label: el.name,
+            }))}
+            update={updateStateDk}
+            child={childrenState}
+            // listBoxStyle={{ color: "white", background: "black" }}
+            // optionsContainerStyle={{
+            //   scrollbarColor: " darkBlue pink",
+            // }}
+            // optionsStyle={{
+            //   backgroundColor: "darkBlue",
+            //   color: "pink",
+            // }}
+            // hoverOptionsStyle={{
+            //   backgroundColor: "lightGreen",
+            //   color: "black",
+            // }}
           />
 
           <label htmlFor="zip">Zip Code</label>
@@ -210,16 +217,25 @@ const Form = ({ toggleModal }) => {
         </fieldset>
         <label htmlFor="department">Department</label>
 
-        <SelectComponent
-          id="departement"
-          options={optionsDept}
-          updateDepartment={updateDepartment}
+        {/* <SelectComponent options={optionsDept} update={updateDepartment} /> */}
+        <SelectDk
+          datas={optionsDept}
+          setValue={updateDepartment}
+          child={dept}
+          update={updateDepartment}
         />
-        <input className="saveBtn" type="submit" value="Save" />
+
+        <input
+          aria-label="save"
+          className="saveBtn"
+          type="submit"
+          value="Save"
+        />
       </form>
     </div>
   )
 }
+
 Form.propTypes = {
   toggleModal: PropTypes.func.isRequired,
 }

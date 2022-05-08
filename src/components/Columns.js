@@ -15,7 +15,6 @@ const columns = [
 
     accessor: "birth",
     Cell: ({ value }) => {
-      console.log(new Date(value))
       return format(new Date(value), "dd/MM/yyyy")
     },
   },
@@ -24,7 +23,6 @@ const columns = [
 
     accessor: "start",
     Cell: ({ value }) => {
-      console.log(new Date(value))
       return format(new Date(value), "dd/MM/yyyy")
     },
   },

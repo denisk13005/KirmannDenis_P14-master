@@ -8,7 +8,7 @@
 
 ### Description
 
-This project use modal npm package make by me and react-table, react-datepicker and react-select packages
+This project use my modal npm package, my select npm package , react-table, react-datepicker
 
 # Getting Started with Create React App
 
@@ -19,6 +19,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Clone or copy this repo and install the dependencies with :
 
 ### `npm i`
+
+### Authentication
+
+For this project I set up firestore database and firestore authentication
+
+For app acces you will need to complete the fields as follows:
+`userName : test@test.com password : password`
 
 ## Available Scripts
 

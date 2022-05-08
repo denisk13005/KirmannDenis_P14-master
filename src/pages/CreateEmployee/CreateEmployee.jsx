@@ -1,11 +1,14 @@
 import React, { useState } from "react"
+import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import Form from "../../components/Form/Form"
 import { Modal } from "dk_modale_package"
 
 import "./createEmployee.scss"
+import PleaseLoggin from "../../components/PleaseLoggIn/PleaseLoggin"
 
 const CreateEmployee = () => {
+  const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
   let [modalIsOpen, setModalIsOpen] = useState(false)
 
   const toggleModal = () => {
@@ -39,22 +42,28 @@ const CreateEmployee = () => {
   const footerMsg = "Thanks"
   return (
     <main id="createEmployeeContainer">
-      <NavLink id="viewCurrentEmployee" to={"/employeeList"}>
-        View Current Employees
-      </NavLink>
-      <h2 id="title">Create Employee</h2>
-      <Modal
-        status={modalIsOpen}
-        modalMessage={modaleMsg}
-        toggleModal={toggleModal}
-        headerStyle={headerStyle}
-        headerMsg={headerMsg}
-        footerStyle={footerStyle}
-        footerMsg={footerMsg}
-        modalContainerStyle={modalContainerStyle}
-        backgroundModalContainerStyle={backgroundModalContainerStyle}
-      />
-      <Form toggleModal={toggleModal} />
+      {adminLoggedIn ? (
+        <>
+          <NavLink id="viewCurrentEmployee" to={"/employeeList"}>
+            View Current Employees
+          </NavLink>
+          <h2 id="title">Create Employee</h2>
+          <Modal
+            status={modalIsOpen}
+            modalMessage={modaleMsg}
+            toggleModal={toggleModal}
+            headerStyle={headerStyle}
+            headerMsg={headerMsg}
+            footerStyle={footerStyle}
+            footerMsg={footerMsg}
+            modalContainerStyle={modalContainerStyle}
+            backgroundModalContainerStyle={backgroundModalContainerStyle}
+          />
+          <Form toggleModal={toggleModal} />
+        </>
+      ) : (
+        <PleaseLoggin />
+      )}
     </main>
   )
 }

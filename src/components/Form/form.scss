@@ -17,6 +17,7 @@ form {
   );
   border-radius: 25px;
   padding: 25px;
+
   select {
     background-color: $darkBlue;
   }
@@ -37,7 +38,7 @@ form {
     font-family: Haettenschweiler, "Arial Narrow Bold", sans-serif;
   }
   .input {
-    width: 100%;
+    width: 99%;
     height: 4vh;
     margin-top: 10px;
     margin-bottom: 8px;

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchDbEmployees } from "../../features/employee"
@@ -55,6 +54,8 @@ function Table() {
   } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination)
 
   const { globalFilter, pageIndex, pageSize } = state
+  globalFilter && console.log(globalFilter.length)
+  page && console.log(page.length)
 
   const itemsOnPage = [1, 10, 25, 50, 100]
 
@@ -81,16 +82,18 @@ function Table() {
       {employees.length ? (
         <table {...getTableProps()} className="tableContainer">
           <thead>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup, index) => (
               <tr
+                key={index}
                 {...headerGroup.getHeaderGroupProps()}
                 style={{
                   backgroundColor: "transparent",
                   cursor: "pointer",
                 }}
               >
-                {headerGroup.headers.map((column) => (
+                {headerGroup.headers.map((column, index) => (
                   <th
+                    key={index}
                     className="column"
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     style={{
@@ -100,11 +103,7 @@ function Table() {
                     {column.render("Header")}
                     <span>
                       {" "}
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? "🔽"
-                          : "🔼"
-                        : ""}
+                      {column.isSorted ? (column.isSortedDesc ? "▿" : "▵") : ""}
                     </span>
                   </th>
                 ))}
@@ -113,21 +112,29 @@ function Table() {
           </thead>
 
           <tbody {...getTableBodyProps()}>
-            {page.map((row) => {
-              prepareRow(row)
+            {page.length === 0 ? (
+              <div className="noMatch">Aucune correspondance</div>
+            ) : (
+              page.map((row, index) => {
+                prepareRow(row)
 
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td className="column" {...cell.getCellProps()}>
-                        {cell.render("Cell")}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
+                return (
+                  <tr key={index} {...row.getRowProps()}>
+                    {row.cells.map((cell, index) => {
+                      return (
+                        <td
+                          key={index}
+                          className="column"
+                          {...cell.getCellProps()}
+                        >
+                          {cell.render("Cell")}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )
+              })
+            )}
           </tbody>
         </table>
       ) : (
