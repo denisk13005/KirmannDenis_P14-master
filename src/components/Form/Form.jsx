@@ -1,10 +1,11 @@
 import React, { useState } from "react"
-import SelectDk from "../SelectDk/SelectDk"
+import {} from "dk_select_package"
 import { states } from "../../mocks/states"
 import DateSelector from "../DateSelector/DateSelector.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createEmployee } from "../../utils/apiDbFiresbase"
+import { SelectDk } from "dk_select_package"
 
 import "./form.scss"
 
