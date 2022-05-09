@@ -5,7 +5,8 @@ import DateSelector from "../DateSelector/DateSelector.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createEmployee } from "../../utils/apiDbFiresbase"
-import { SelectDk } from "dk_select_package"
+// import { SelectDk } from "dk_select_package"
+import SelectDk from "../SelectDk/SelectDk"
 
 import "./form.scss"
 
@@ -34,12 +35,7 @@ const Form = ({ toggleModal }) => {
 
   // ----------------------essai du composant select avec div--------------------
 
-  const [childrenState, setChildrenState] = useState("Alabama")
-
-  const updateStateDk = (value) => {
-    setState(value.value)
-    setChildrenState(value.label)
-  }
+  const [stateString, setStateString] = useState("Alabama")
 
   console.log(state, dept)
 
@@ -71,6 +67,15 @@ const Form = ({ toggleModal }) => {
    */
   const updateStart = (date) => {
     setStart(date)
+  }
+
+  /**
+   * update state and childrenState
+   * @param {object} data object return
+   */
+  const updateState = (data) => {
+    setState(data.value)
+    setStateString(data.label)
   }
 
   /**
@@ -111,8 +116,13 @@ const Form = ({ toggleModal }) => {
     setResetValue(true)
   }
 
+  //SelectDk props
+
+  const [stateOpen, setStateOpen] = useState(false)
+  const [deptOpen, setDeptOpen] = useState(false)
+
   return (
-    <div>
+    <div onClick={() => console.log("click")}>
       <form onSubmit={saveEmployee}>
         <label htmlFor="firstName">First Name</label>
         <input
@@ -176,32 +186,27 @@ const Form = ({ toggleModal }) => {
           />
           <label htmlFor="state">State</label>
 
-          {/* <SelectComponent
-            options={states.map((el) => ({
-              value: el.abbreviation,
-              label: el.name,
-            }))}
-            update={updateState}
-            // required
-          /> */}
           <SelectDk
             datas={states.map((el) => ({
               value: el.abbreviation,
               label: el.name,
             }))}
-            update={updateStateDk}
-            child={childrenState}
-            // listBoxStyle={{ color: "white", background: "black" }}
+            update={updateState}
+            visibleValue={stateString}
+            open={stateOpen}
+            setOpen={setStateOpen}
+            // listBoxStyle={{ color: "white", background: "red" }}
             // optionsContainerStyle={{
             //   scrollbarColor: " darkBlue pink",
+            //   backgroundColor: "black",
             // }}
             // optionsStyle={{
-            //   backgroundColor: "darkBlue",
-            //   color: "pink",
+            //   backgroundColor: "white",
+            //   color: "orange",
             // }}
             // hoverOptionsStyle={{
-            //   backgroundColor: "lightGreen",
-            //   color: "black",
+            //   backgroundColor: "orange",
+            //   color: "white",
             // }}
           />
 
@@ -218,12 +223,12 @@ const Form = ({ toggleModal }) => {
         </fieldset>
         <label htmlFor="department">Department</label>
 
-        {/* <SelectComponent options={optionsDept} update={updateDepartment} /> */}
         <SelectDk
           datas={optionsDept}
-          setValue={updateDepartment}
-          child={dept}
+          visibleValue={dept}
           update={updateDepartment}
+          open={deptOpen}
+          setOpen={setDeptOpen}
         />
 
         <input
