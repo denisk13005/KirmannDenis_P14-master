@@ -7,6 +7,9 @@
   padding: 0px 50px;
   align-items: center;
   height: 15vh;
+  @media screen and (max-width: 600px) {
+    padding: 0px 20px;
+  }
 
   h2 {
     border-top: none;
@@ -14,9 +17,9 @@
     font-size: 32px;
     font-family: Georgia, "Times New Roman", Times, serif;
     @media screen and (max-width: 600px) {
-      font-size: 24px;
+      font-size: 18px;
       -webkit-text-stroke: 0px;
-      color: $lightGreen;
+      color: $darkBlue;
     }
   }
   .home {
@@ -25,7 +28,6 @@
     font-size: 54px;
     font-family: Georgia, "Times New Roman", Times, serif;
     margin: 0;
-    margin-top: 20px;
     &:hover {
       transform: scale(1);
     }
@@ -33,12 +35,12 @@
     @media screen and (max-width: 600px) {
       font-size: 24px;
       -webkit-text-stroke: 0px;
-      color: $lightGreen;
+      color: $darkBlue;
     }
   }
   .adminAndLogout {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     img {
       width: 25px;

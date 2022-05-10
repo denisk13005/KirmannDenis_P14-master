@@ -9,3 +9,87 @@ vide les champs lorsque qu'on la ferme
 useTable ===> hook de démarrage de react table, pour l'utiliser il faut lui passer un objet contenant une liste des colonnes et une liste de data  ces listes doivent etre mémoîsées à l'aide de useMemo 
 
 useMemo ===> Renvoie une valeur mémoïsée , recalculera la valeur que si l'une de ses entrées a changé(tableau ou fonction de création), évite les calculs à chaque rendu
+
+
+package npm :
+
+- npm init 
+- installer react et react-dom v17 pour eviter les conflits de version
+- installer storybook pour pouvoir travailler sur le composant sans avoir a le  compiler et le publier a chaque fois (npx sb init )
+- exemple de stories : select.storie.js : 
+import React from 'react'
+import { storiesOf } from '@storybook/react'
+import {SelectDk} from '../components/SelectDk'
+
+const stories = storiesOf('App test', module)
+
+stories.add('App', () => {
+  let test = [{name:'test', label:"test"}, {name:'test2', label:"test2"}]
+  return(
+    <form>
+      <SelectDk listBoxStyle={{width:'30%', color:'white'}} datas={test} child={"test"}/>
+    </form>
+  )
+})
+- npm run storybook pour l'ouvrir
+
+- installer rollup :
+
+"rollup": "^2.72.1",
+"rollup-plugin-babel": "^4.4.0",
+"rollup-plugin-peer-deps-external": "^2.2.4",
+"rollup-plugin-postcss": "^4.0.2"
+
+l'import de proptypes ne fonctionne pas durant la compilation rollup , remplacer par ' const PropTypes = require("prop-types")'
+
+-rollup.config.js :
+
+import babel from "rollup-plugin-babel"
+import resolve from "@rollup/plugin-node-resolve"
+import external from "rollup-plugin-peer-deps-external"
+// import {terser} from 'rollup-plugin-terser'
+import postcss from "rollup-plugin-postcss"
+
+export default [
+  {
+    input: "./src/index.js",
+    output: [
+      {
+        file: "dist/index.js",
+        format: "cjs",
+      },
+      {
+        file: "dist/index.es.js",
+        format: "es",
+        exports: "named",
+      },
+    ],
+    plugins: [
+      postcss({
+        plugins: [],
+        minimize: true,
+      }),
+      babel({
+        exclude: "node_modules/**",
+        presets: ["@babel/preset-react"],
+      }),
+      external(),
+      resolve(),
+      // terser()
+    ],
+  },
+]
+ 
+- ajouter le script "build-lib": "rollup -c" dans le package.json
+
+- ajouter le pluggin terser pour minifier
+
+- avant de publier ne pas oublier de compléter ds package json:
+ "main": "dist/index.js",
+ "module" : "dist/index.es.js",
+
+
+
+
+
+

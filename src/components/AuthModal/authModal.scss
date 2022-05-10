@@ -25,9 +25,23 @@
     .submitBtn {
       position: absolute;
       bottom: 0;
-      width: 30%;
+      width: 40%;
+      height: 4vh;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scale(1);
+      border-radius: 20px;
+      background-color: $darkBlue;
+      color: white;
+      box-shadow: 2px 2px 4px $lightPink;
+      transition: transform 0.2s;
+      &:hover {
+        background-color: $lightBlue;
+        color: $darkBlue;
+        box-shadow: 4px 4px 4px $darkBlue;
+        font-weight: bold;
+        transform: translateX(-50%) scale(1.04);
+        cursor: pointer;
+      }
     }
     .errorMessage {
       color: red;
