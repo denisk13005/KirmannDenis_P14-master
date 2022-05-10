@@ -45,6 +45,7 @@ const AuthModal = () => {
           value={userName}
           placeholder="test"
           onChange={(e) => setUserName(e.target.value.trim())}
+          autoFocus
         />
         <label className="authLabel" htmlFor="password">
           Password

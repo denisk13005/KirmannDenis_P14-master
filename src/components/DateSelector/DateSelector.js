@@ -4,10 +4,12 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import PropTypes from "prop-types"
 
-const DateSelector = ({ id, update, resetValue }) => {
+const DateSelector = ({ id, update, resetValue, setResetValue }) => {
   const [selectedDate, setselectedDate] = useState(null)
+
   useEffect(() => {
     resetValue && setselectedDate(null)
+    setResetValue(false)
   }, [resetValue])
 
   return (
@@ -33,6 +35,7 @@ DateSelector.propTypes = {
   id: PropTypes.string.isRequired,
   update: PropTypes.func,
   resetValue: PropTypes.bool,
+  setResetValue: PropTypes.func,
 }
 export default DateSelector
 //

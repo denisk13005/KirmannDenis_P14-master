@@ -18,6 +18,10 @@
       margin: 10px auto;
       border: none;
       border-radius: 5px;
+      outline: none;
+      &:focus {
+        outline: 1px solid $lightPink;
+      }
     }
     .authLabel {
       transform: translateX(0%);

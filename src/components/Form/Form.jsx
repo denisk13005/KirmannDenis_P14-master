@@ -21,22 +21,18 @@ const optionsDept = departments.map((el) => ({
  */
 const Form = ({ toggleModal }) => {
   //local state
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
+  const [firstName, setFirstName] = useState("t")
+  const [lastName, setLastName] = useState("t")
   const [birth, setBirth] = useState("")
   const [start, setStart] = useState("")
-  const [street, setStreet] = useState("")
-  const [city, setCity] = useState("")
-  const [state, setState] = useState("AL")
-  const [zip, setZip] = useState("")
+  const [street, setStreet] = useState("t")
+  const [city, setCity] = useState("t")
+  const [stateAbb, setStateAbb] = useState("AL")
+  const [zip, setZip] = useState("2")
   const [dept, setDept] = useState("Sales")
   const [resetValue, setResetValue] = useState(false)
 
-  // ----------------------essai du composant select avec div--------------------
-
-  const [stateString, setStateString] = useState("Alabama")
-
-  console.log(state, dept)
+  const [stateName, setStateName] = useState("Alabama")
 
   //employee to add in db
   let employee = {
@@ -46,7 +42,7 @@ const Form = ({ toggleModal }) => {
     start,
     street,
     city,
-    state,
+    stateAbb,
     zip,
     dept,
   }
@@ -73,8 +69,8 @@ const Form = ({ toggleModal }) => {
    * @param {object} data object return
    */
   const updateState = (data) => {
-    setState(data.value)
-    setStateString(data.label)
+    setStateAbb(data.value)
+    setStateName(data.label)
   }
 
   /**
@@ -95,9 +91,11 @@ const Form = ({ toggleModal }) => {
     setStart(" ")
     setStreet("")
     setCity("")
-    setState("")
+    setStateAbb("AL")
     setZip("")
-    setDept("")
+    setDept("Sales")
+    setStateName("Alabama")
+    setResetValue(true)
   }
 
   // const dispatch = useDispatch()
@@ -112,7 +110,6 @@ const Form = ({ toggleModal }) => {
     createEmployee(employee)
     toggleModal()
     fieldReset()
-    setResetValue(true)
   }
 
   //SelectDk props
@@ -159,6 +156,7 @@ const Form = ({ toggleModal }) => {
           id="birth"
           update={updateBirth}
           resetValue={resetValue}
+          setResetValue={setResetValue}
           required
         />
         <label htmlFor="start">Start Date</label>
@@ -167,6 +165,7 @@ const Form = ({ toggleModal }) => {
           id="start"
           update={updateStart}
           resetValue={resetValue}
+          setResetValue={setResetValue}
           required
         />
 
@@ -202,7 +201,7 @@ const Form = ({ toggleModal }) => {
               label: el.name,
             }))}
             update={updateState}
-            visibleValue={stateString}
+            visibleValue={stateName}
             open={stateOpen}
             setOpen={setStateOpen}
             // listBoxStyle={{ color: "white", background: "red" }}
