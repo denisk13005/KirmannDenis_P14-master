@@ -5,8 +5,8 @@ import DateSelector from "../DateSelector/DateSelector.js"
 import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createEmployee } from "../../utils/apiDbFiresbase"
-// import { SelectDk } from "dk_select_package"
-import SelectDk from "../SelectDk/SelectDk"
+import { SelectDk } from "dk_select_package"
+// import SelectDk from "../SelectDk/SelectDk"
 
 import "./form.scss"
 
@@ -120,9 +120,16 @@ const Form = ({ toggleModal }) => {
 
   const [stateOpen, setStateOpen] = useState(false)
   const [deptOpen, setDeptOpen] = useState(false)
+  const closeSelect = () => {
+    if (stateOpen) {
+      setStateOpen(false)
+    } else if (deptOpen) {
+      setDeptOpen(false)
+    }
+  }
 
   return (
-    <div onClick={() => console.log("click")}>
+    <div onClick={closeSelect}>
       <form onSubmit={saveEmployee}>
         <label htmlFor="firstName">First Name</label>
         <input
@@ -198,7 +205,7 @@ const Form = ({ toggleModal }) => {
             // listBoxStyle={{ color: "white", background: "red" }}
             // optionsContainerStyle={{
             //   scrollbarColor: " darkBlue pink",
-            //   backgroundColor: "black",
+            //   backgroundColor: "white",
             // }}
             // optionsStyle={{
             //   backgroundColor: "white",
