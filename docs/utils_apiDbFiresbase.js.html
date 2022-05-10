@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: utils/store.js</title>
+    <title>JSDoc: Source: utils/apiDbFiresbase.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: utils/store.js</h1>
+    <h1 class="page-title">Source: utils/apiDbFiresbase.js</h1>
 
     
 
@@ -26,18 +26,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { configureStore } from "@reduxjs/toolkit"
-import employeesSlice from "../features/employee"
+            <pre class="prettyprint source linenums"><code>import { getDocs, addDoc } from "firebase/firestore"
+import { employeesCollectionRef } from "./firebase.config"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../utils/firebase.config"
 
 /**
- * redux store
- * @returns {store} redux store
+ * It gets all the documents from the employees collection and returns an array of objects with the
+ * document data and the document id
+ * @returns An array of objects.
  */
-export const store = configureStore({
-  reducer: {
-    employees: employeesSlice,
-  },
-})
+export const getEmployees = async () => {
+  const data = await getDocs(employeesCollectionRef)
+  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+}
+
+/**
+ * It takes an object as an argument, and then it adds that object to a collection in Firestore.
+ * @param employee - {
+ */
+export const createEmployee = async (employee) => {
+  await addDoc(employeesCollectionRef, employee)
+}
+
+const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
+
+export const signInAuth = async (email, password) => {
+  try {
+    const resp = await signIn(email, password)
+    return resp.user
+  } catch (error) {
+    return error.code
+  }
+}
 </code></pre>
         </article>
     </section>
