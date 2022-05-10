@@ -6,7 +6,6 @@ import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createEmployee } from "../../utils/apiDbFiresbase"
 import { SelectDk } from "dk_select_package"
-// import SelectDk from "../SelectDk/SelectDk"
 
 import "./form.scss"
 
@@ -141,6 +140,7 @@ const Form = ({ toggleModal }) => {
           onChange={(e) => setFirstName(e.target.value.trim())}
           required
           autoFocus
+          maxLength="30"
         />
         <label htmlFor="lastName">Last Name</label>
         <input
@@ -151,6 +151,7 @@ const Form = ({ toggleModal }) => {
           value={lastName}
           onChange={(e) => setLastName(e.target.value.trim())}
           required
+          maxLength="30"
         />
         <label htmlFor="birth">Date Of Birth</label>
 
@@ -180,6 +181,7 @@ const Form = ({ toggleModal }) => {
             value={street}
             onChange={(e) => setStreet(e.target.value)}
             required
+            maxLength="30"
           />
           <label htmlFor="city">City</label>
           <input
@@ -190,6 +192,7 @@ const Form = ({ toggleModal }) => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
+            maxLength="30"
           />
           <label htmlFor="state">State</label>
 

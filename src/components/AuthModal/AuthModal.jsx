@@ -57,7 +57,7 @@ const AuthModal = () => {
           onChange={(e) => setPassword(e.target.value.trim())}
         />
         <span className="errorMessage">{errorMessage}</span>
-        <input className="submitBtn" type="submit" value="Authenticate" />
+        <input className="submitBtn" type="submit" value="LogIn" />
       </form>
     </div>
   )
