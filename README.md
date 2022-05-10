@@ -20,6 +20,12 @@ Clone or copy this repo and install the dependencies with :
 
 ### `npm i`
 
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
 ### Authentication
 
 For this project I set up firestore database and firestore authentication
@@ -28,12 +34,6 @@ For app acces you will need to complete the fields as follows:
 
 userName : test@test.com <br/>
 password : password
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
