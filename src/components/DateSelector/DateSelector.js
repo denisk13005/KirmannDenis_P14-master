@@ -7,6 +7,9 @@ import PropTypes from "prop-types"
 const DateSelector = ({ id, update, resetValue, setResetValue }) => {
   const [selectedDate, setselectedDate] = useState(null)
 
+  /**
+   * this use effect reset the field data afet submit
+   */
   useEffect(() => {
     resetValue && setselectedDate(null)
     setResetValue(false)
