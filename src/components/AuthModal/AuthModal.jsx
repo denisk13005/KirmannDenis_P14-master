@@ -18,7 +18,9 @@ const AuthModal = () => {
 
   const getAuth = async (userName, password) => {
     const auth = await signInAuth(userName, password)
+    auth && console.log(auth)
     if (auth.accessToken) {
+      localStorage.setItem("adminAccessToken", auth.accessToken)
       dispatch(logIn())
       setErrorMessage("")
     } else {
