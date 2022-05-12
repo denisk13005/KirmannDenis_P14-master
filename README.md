@@ -8,7 +8,7 @@
 
 ### Description
 
-This project use my modal npm package, my select npm package , react-table, react-datepicker
+this application was rewritten in react from an app using jquerry plugins which were replaced by react packages and by a modal package and a select package written and published on npm by me
 
 # Getting Started with Create React App
 
