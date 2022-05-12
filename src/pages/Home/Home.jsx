@@ -1,12 +1,20 @@
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+// import { useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import AuthModal from "../../components/AuthModal/AuthModal"
+import { logIn } from "../../features/employee"
 import "./home.scss"
 
 const Home = () => {
+  const dispatch = useDispatch()
+  // if admin loggin and not logout accessToken is in the localStorage
+  const adminAccessToken = localStorage.getItem("adminAccessToken")
   const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
-
+  // check after all refresh or reco if the token is present
+  useEffect(() => {
+    adminAccessToken && dispatch(logIn())
+  }, [])
   return (
     <main id="homeContainer">
       {adminLoggedIn ? (

@@ -11,7 +11,6 @@ const GlobalFilter = ({ filter, setFilter }) => {
           id="search"
           value={filter || ""}
           onChange={(e) => setFilter(e.target.value)}
-          // style={{ width: "9vw", height: "2vh" }}
         />
       </div>
     </span>

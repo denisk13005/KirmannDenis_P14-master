@@ -9,7 +9,7 @@ const NotFound = () => {
       <img src={logo} alt="Logo" />
       <h3>Wealth Health </h3>
       <p> ---Page Not Found---</p>
-      <NavLink to="/">---Go Home---</NavLink>
+      <NavLink to="/">---Go Login---</NavLink>
     </section>
   )
 }

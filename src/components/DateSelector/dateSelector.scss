@@ -72,6 +72,9 @@
       }
     }
   }
+  .react-datepicker__triangle {
+    transform: translate(169px) !important;
+  }
   .react-datepicker__navigation-icon::before {
     border-color: $darkBlue;
   }

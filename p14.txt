@@ -89,6 +89,9 @@ export default [
  "module" : "dist/index.es.js",
 
 
+ Rollup est un bundler de modules pour JavaScript qui compile de petits morceaux de code en quelque chose de plus grand et plus complexe, comme une bibliothèque ou une application.
+
+
 
 
 

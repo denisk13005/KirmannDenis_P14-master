@@ -18,7 +18,9 @@ const AuthModal = () => {
 
   const getAuth = async (userName, password) => {
     const auth = await signInAuth(userName, password)
+    auth && console.log(auth)
     if (auth.accessToken) {
+      localStorage.setItem("adminAccessToken", auth.accessToken)
       dispatch(logIn())
       setErrorMessage("")
     } else {
@@ -45,6 +47,7 @@ const AuthModal = () => {
           value={userName}
           placeholder="test"
           onChange={(e) => setUserName(e.target.value.trim())}
+          autoFocus
         />
         <label className="authLabel" htmlFor="password">
           Password
@@ -57,7 +60,7 @@ const AuthModal = () => {
           onChange={(e) => setPassword(e.target.value.trim())}
         />
         <span className="errorMessage">{errorMessage}</span>
-        <input className="submitBtn" type="submit" value="Authenticate" />
+        <input className="submitBtn" type="submit" value="LogIn" />
       </form>
     </div>
   )

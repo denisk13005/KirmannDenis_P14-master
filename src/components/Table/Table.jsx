@@ -111,7 +111,7 @@ function Table() {
             ))}
           </thead>
           {page.length === 0 ? (
-            <div className="noMatch">Aucune Correspondance</div>
+            <tbody className="noMatch">No Match</tbody>
           ) : (
             <tbody {...getTableBodyProps()}>
               {page.map((row, index) => {
