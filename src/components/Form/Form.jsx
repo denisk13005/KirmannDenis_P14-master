@@ -6,20 +6,18 @@ import PropTypes from "prop-types"
 import { departments } from "../../mocks/departments"
 import { createEmployee } from "../../utils/apiDbFiresbase"
 import { SelectDk } from "dk_select_package"
-
 import "./form.scss"
-
-//option for selectComponent
-const optionsDept = departments.map((el) => ({
-  value: el,
-  label: el,
-}))
 
 /**
  * Form component
  * @returns {ReactComponentElement} form for add employee
  */
 const Form = ({ toggleModal }) => {
+  //option for selectComponent
+  const optionsDept = departments.map((el) => ({
+    value: el,
+    label: el,
+  }))
   //local state
   const [firstName, setFirstName] = useState("t")
   const [lastName, setLastName] = useState("t")
@@ -30,7 +28,7 @@ const Form = ({ toggleModal }) => {
   const [stateAbb, setStateAbb] = useState("AL")
   const [zip, setZip] = useState("2")
   const [dept, setDept] = useState("Sales")
-  const [resetValue, setResetValue] = useState(false)
+  const [resetDateValue, setResetDateValue] = useState(false)
 
   const [stateName, setStateName] = useState("Alabama")
 
@@ -95,7 +93,7 @@ const Form = ({ toggleModal }) => {
     setZip("")
     setDept("Sales")
     setStateName("Alabama")
-    setResetValue(true)
+    setResetDateValue(true)
   }
 
   // const dispatch = useDispatch()
@@ -113,7 +111,6 @@ const Form = ({ toggleModal }) => {
   }
 
   //SelectDk props
-
   const [stateOpen, setStateOpen] = useState(false)
   const [deptOpen, setDeptOpen] = useState(false)
   const closeSelect = () => {
@@ -155,8 +152,8 @@ const Form = ({ toggleModal }) => {
         <DateSelector
           id="birth"
           update={updateBirth}
-          resetValue={resetValue}
-          setResetValue={setResetValue}
+          resetValue={resetDateValue}
+          setResetValue={setResetDateValue}
           required
         />
         <label htmlFor="start">Start Date</label>
@@ -164,8 +161,8 @@ const Form = ({ toggleModal }) => {
         <DateSelector
           id="start"
           update={updateStart}
-          resetValue={resetValue}
-          setResetValue={setResetValue}
+          resetValue={resetDateValue}
+          setResetValue={setResetDateValue}
           required
         />
 
