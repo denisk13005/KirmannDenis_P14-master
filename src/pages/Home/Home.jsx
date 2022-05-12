@@ -8,9 +8,9 @@ import "./home.scss"
 
 const Home = () => {
   const dispatch = useDispatch()
+  const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
   // if admin loggin and not logout accessToken is in the localStorage
   const adminAccessToken = localStorage.getItem("adminAccessToken")
-  const adminLoggedIn = useSelector((state) => state.employees.adminLoggedIn)
   // check after all refresh or reco if the token is present
   useEffect(() => {
     adminAccessToken && dispatch(logIn())
