@@ -19,14 +19,14 @@ const Form = ({ toggleModal }) => {
     label: el,
   }))
   //local state
-  const [firstName, setFirstName] = useState("t")
-  const [lastName, setLastName] = useState("t")
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [birth, setBirth] = useState("")
   const [start, setStart] = useState("")
-  const [street, setStreet] = useState("t")
-  const [city, setCity] = useState("t")
+  const [street, setStreet] = useState("")
+  const [city, setCity] = useState("")
   const [stateAbb, setStateAbb] = useState("AL")
-  const [zip, setZip] = useState("2")
+  const [zip, setZip] = useState("")
   const [dept, setDept] = useState("Sales")
   const [resetDateValue, setResetDateValue] = useState(false)
 

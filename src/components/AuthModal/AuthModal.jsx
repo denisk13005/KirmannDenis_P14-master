@@ -16,6 +16,13 @@ const AuthModal = () => {
     getAuth(userName, password)
   }
 
+  /**
+   * Ckeck the username and password in the firebase signInAuth api,
+   * stock the response token in local storage and dispatch the redux logIn action  *
+   * @param {string} userName
+   * @param {string} password
+   * @return accessToken connection if request ok or error if not
+   */
   const getAuth = async (userName, password) => {
     const auth = await signInAuth(userName, password)
     auth && console.log(auth)

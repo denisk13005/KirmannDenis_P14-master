@@ -18,7 +18,7 @@ const CreateEmployee = () => {
   // check after all refresh or reco if the token is present
   useEffect(() => {
     adminAccessToken && dispatch(logIn())
-  })
+  }, [])
   let [modalIsOpen, setModalIsOpen] = useState(false)
 
   const toggleModal = () => {
