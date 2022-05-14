@@ -111,7 +111,11 @@ function Table() {
             ))}
           </thead>
           {page.length === 0 ? (
-            <tbody className="noMatch">No Match</tbody>
+            <tbody className="noMatch">
+              <tr>
+                <td style={{ backgroundColor: "#f4f4f4" }}>No Match</td>
+              </tr>
+            </tbody>
           ) : (
             <tbody {...getTableBodyProps()}>
               {page.map((row, index) => {

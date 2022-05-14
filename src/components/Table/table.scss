@@ -163,15 +163,15 @@
   }
 }
 .noMatch {
-  display: block;
-  width: max-content;
+  width: 660%;
   min-height: 2vh;
   font-size: 24px;
   align-items: center;
-  margin: 5% 340%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and(max-width:900px) {
     font-size: 10px;
-    width: max-content;
-    margin: 5% 450%;
+    width: 660%;
   }
 }
