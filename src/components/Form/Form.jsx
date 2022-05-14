@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import {} from "dk_select_package"
 import { states } from "../../mocks/states"
 import DateSelector from "../DateSelector/DateSelector.js"
 import PropTypes from "prop-types"
