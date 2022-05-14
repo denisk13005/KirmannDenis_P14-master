@@ -54,8 +54,6 @@ function Table() {
   } = useTable({ columns, data }, useGlobalFilter, useSortBy, usePagination)
 
   const { globalFilter, pageIndex, pageSize } = state
-  globalFilter && console.log(globalFilter.length)
-  page && console.log(page.length)
 
   const itemsOnPage = [1, 10, 25, 50, 100]
 

@@ -51,7 +51,6 @@ const Form = ({ toggleModal }) => {
    *
    */
   const updateBirth = (date) => {
-    console.log(date)
     setBirth(date)
   }
 
