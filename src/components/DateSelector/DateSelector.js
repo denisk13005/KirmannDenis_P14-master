@@ -21,7 +21,7 @@ const DateSelector = ({ id, update, resetValue, setResetValue }) => {
         selected={selectedDate}
         onChange={(date) => {
           setselectedDate(date)
-          date && update(date.toDateString())
+          date && update(new Date(date).toISOString())
         }}
         className="input"
         id={id}
