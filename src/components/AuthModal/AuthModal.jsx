@@ -10,8 +10,11 @@ const AuthModal = () => {
   const [password, setPassword] = useState("password")
   const [errorMessage, setErrorMessage] = useState("")
   const dispatch = useDispatch()
-  const logged = async (e) => {
-    console.log(userName, password)
+  /**
+   * prevent the refresh and launch getAuth function
+   * @param {event} e
+   */
+  const logged = (e) => {
     e.preventDefault()
     getAuth(userName, password)
   }
@@ -24,8 +27,8 @@ const AuthModal = () => {
    * @return accessToken connection if request ok or error if not
    */
   const getAuth = async (userName, password) => {
+    console.log(userName)
     const auth = await signInAuth(userName, password)
-    auth && console.log(auth)
     if (auth.accessToken) {
       localStorage.setItem("adminAccessToken", auth.accessToken)
       dispatch(logIn())

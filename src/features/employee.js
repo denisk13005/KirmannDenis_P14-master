@@ -23,18 +23,9 @@ const employeesSlice = createSlice({
   name: "employees",
   initialState: {
     informations: [],
-    modalIsOpen: false,
     adminLoggedIn: false,
   },
   reducers: {
-    openModal: (state) => {
-      state.modalIsOpen = true
-      return state
-    },
-    closeModal: (state) => {
-      state.modalIsOpen = false
-      return state
-    },
     logIn: (state) => {
       state.adminLoggedIn = true
       return state
@@ -54,8 +45,7 @@ const employeesSlice = createSlice({
 
 export const {
   addEmployee,
-  openModal,
-  closeModal,
+
   getDbEmployees,
   logIn,
   logOut,
