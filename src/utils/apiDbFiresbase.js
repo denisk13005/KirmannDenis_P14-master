@@ -15,13 +15,20 @@ export const getEmployees = async () => {
 
 /**
  * It takes an object as an argument, and then it adds that object to a collection in Firestore.
- * @param employee - {
+ * @param employee
  */
 export const createEmployee = async (employee) => {
   await addDoc(employeesCollectionRef, employee)
 }
 
 const signIn = (email, pwd) => signInWithEmailAndPassword(auth, email, pwd)
+
+/**
+ *
+ * @param {string} email
+ * @param {password} password
+ * @returns api response
+ */
 
 export const signInAuth = async (email, password) => {
   try {
