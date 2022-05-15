@@ -54,7 +54,6 @@ const AuthModal = () => {
           name="userName"
           id="userName"
           value={userName}
-          placeholder="test"
           onChange={(e) => setUserName(e.target.value.trim())}
           autoFocus
         />
